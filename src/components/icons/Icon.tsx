@@ -25,7 +25,9 @@ export type IconName =
   | "close"
   | "search"
   | "arrow-right"
-  | "chevron-down";
+  | "chevron-down"
+  | "flame"
+  | "wind";
 
 const PATHS: Record<IconName, string> = {
   leaf: "M12 3c4.5 2 6 5.5 6 9s-2.5 8-6 9c-3.5-1-6-5.5-6-9s1.5-7 6-9Z M12 5v15",
@@ -44,6 +46,8 @@ const PATHS: Record<IconName, string> = {
   search: "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z M21 21l-4.3-4.3",
   "arrow-right": "M4 12h16 M13 5l7 7-7 7",
   "chevron-down": "M6 9l6 6 6-6",
+  flame: "M12 3c2 3 5 6.2 5 9.5a5 5 0 1 1-10 0C7 9.2 10 6 12 3Z M12 12.5c.6-1 .9-2 .6-3.3-1 1.2-1.6 2.4-1.6 3.6a1 1 0 0 0 1 1c.4 0 .7-.2.9-.4",
+  wind: "M3 7.5h10a2.25 2.25 0 1 0-2.25-2.25 M3 12h14a2.25 2.25 0 1 1-2.25 2.25 M3 16.5h8",
 };
 
 export function Icon({ name, ...props }: { name: IconName } & SVGProps<SVGSVGElement>) {

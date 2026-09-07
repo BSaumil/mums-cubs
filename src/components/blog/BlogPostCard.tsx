@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { VisualBadge } from "@/components/ui/VisualBadge";
+import { ReadBadge } from "@/components/blog/ReadBadge";
 import type { BlogPost } from "@/lib/types";
 
 function formatDate(iso: string) {
@@ -12,7 +13,10 @@ export function BlogPostCard({ post }: { post: BlogPost }) {
       href={`/blog/${post.slug}`}
       className="flex flex-col gap-3 rounded-card bg-surface-raised p-5 shadow-resting transition-shadow hover:shadow-tray focus-visible:shadow-tray"
     >
-      <VisualBadge label={post.contextLabel} paradigm={post.paradigm === "integrated" ? undefined : post.paradigm} />
+      <div className="flex items-center justify-between gap-2">
+        <VisualBadge label={post.contextLabel} paradigm={post.paradigm === "integrated" ? undefined : post.paradigm} />
+        <ReadBadge slug={post.slug} />
+      </div>
       <h3 className="text-lg font-semibold text-[var(--text-primary)]">{post.title}</h3>
       <p className="flex-1 text-sm text-[var(--text-secondary)]">{post.description}</p>
       <p className="text-xs text-[var(--text-subtle)]">

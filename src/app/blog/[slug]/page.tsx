@@ -3,10 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AnalyticsBeacon } from "@/components/analytics/AnalyticsBeacon";
 import { MarkdownLite } from "@/components/blog/MarkdownLite";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
+import { MarkAsReadToggle } from "@/components/blog/MarkAsReadToggle";
 import { VisualBadge } from "@/components/ui/VisualBadge";
+import { PrintButton } from "@/components/ui/PrintButton";
 import { Icon } from "@/components/icons/Icon";
 import { blogPosts, getBlogPostBySlug } from "@/lib/content/blog-posts";
 import { getCurriculumAreaBySlug } from "@/lib/content/curriculum-areas";
+import { articleJsonLd, breadcrumbJsonLd, jsonLdScript } from "@/lib/structured-data";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -37,14 +41,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
 
   const relatedArea = post.relatedAreaSlug ? getCurriculumAreaBySlug(post.relatedAreaSlug) : undefined;
+  const relatedPosts = blogPosts.filter((other) => other.category === post.category && other.id !== post.id).slice(0, 3);
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <AnalyticsBeacon event="blog_post_viewed" properties={{ slug: post.slug, category: post.category }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdScript(articleJsonLd(post)) + jsonLdScript(breadcrumbJsonLd([
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ])),
+        }}
+      />
 
-      <Link href="/blog" className="text-sm font-medium text-[var(--text-subtle)] hover:text-[var(--text-primary)]">
-        ← All articles
-      </Link>
+      <div className="flex items-center justify-between gap-4">
+        <Link href="/blog" className="text-sm font-medium text-[var(--text-subtle)] hover:text-[var(--text-primary)]">
+          ← All articles
+        </Link>
+        <div className="flex items-center gap-2">
+          <MarkAsReadToggle slug={post.slug} />
+          <PrintButton label="Print" />
+        </div>
+      </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <VisualBadge label={post.contextLabel} paradigm={post.paradigm === "integrated" ? undefined : post.paradigm} />
@@ -71,6 +91,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
           <p className="mt-1 text-sm text-[var(--text-secondary)]">{relatedArea.leadSentence}</p>
         </div>
+      ) : null}
+
+      {relatedPosts.length > 0 ? (
+        <section className="mt-14" data-print-hide>
+          <h2 className="text-xl font-semibold">More like this</h2>
+          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {relatedPosts.map((related) => (
+              <BlogPostCard key={related.id} post={related} />
+            ))}
+          </div>
+        </section>
       ) : null}
     </article>
   );

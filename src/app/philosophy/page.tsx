@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import type { ContextLabel } from "@/lib/types";
 import { learningFrameworks } from "@/lib/content/learning-frameworks";
 
@@ -46,6 +47,9 @@ export default function PhilosophyPage() {
               <strong className="text-[var(--text-primary)]">{tradition.title}:</strong> {tradition.summary}
             </p>
           ))}
+          <Link href="/elements" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-wood-700 hover:underline">
+            Explore the five elements →
+          </Link>
         </section>
       ) : null}
     </div>

@@ -29,6 +29,14 @@ export function MobileNav({ items }: MobileNavProps) {
           className="absolute inset-x-0 top-full border-b border-[var(--color-ink-300)]/30 bg-[var(--color-canvas-50)] px-4 pb-6 pt-2 shadow-floating"
         >
           <nav aria-label="Primary" className="flex flex-col gap-1">
+            <Link
+              href="/search"
+              onClick={() => setOpen(false)}
+              className="flex min-h-11 items-center gap-2 rounded-lg px-3 py-3 text-base font-medium text-[var(--text-primary)] hover:bg-[var(--color-wood-100)]"
+            >
+              <Icon name="search" className="h-4.5 w-4.5" />
+              Search
+            </Link>
             {items.map((item) => (
               <Link
                 key={item.href}

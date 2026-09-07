@@ -109,6 +109,52 @@
   --duration-reveal: 550ms;
 }
 
+/*
+ * Dark theme: only the neutral surface/text/border scale inverts. Brand
+ * accent hues (wood/clay/leaf/saffron/sky/blush) stay put — they're the
+ * identity, not the chrome — except the heading tone, which swaps to a
+ * lighter sage so it still reads against a dark background.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-canvas-50: #1c1815;
+    --color-canvas-100: #241f1a;
+    --color-canvas-200: #2e2820;
+
+    --color-ink-50: #241f1a;
+    --color-ink-300: #6f6455;
+    --color-ink-500: #b8b0a3;
+    --color-ink-700: #d9d2c4;
+    --color-ink-900: #f5f1e8;
+
+    --surface-raised: #252019;
+    --text-heading: var(--color-leaf-300);
+
+    --shadow-resting: 0 2px 4px rgba(0, 0, 0, 0.24), 0 10px 30px rgba(0, 0, 0, 0.32);
+    --shadow-tray: 0 3px 5px rgba(0, 0, 0, 0.28), 0 18px 45px rgba(0, 0, 0, 0.36);
+    --shadow-floating: 0 10px 22px rgba(0, 0, 0, 0.3), 0 30px 70px rgba(0, 0, 0, 0.4);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-canvas-50: #1c1815;
+  --color-canvas-100: #241f1a;
+  --color-canvas-200: #2e2820;
+
+  --color-ink-50: #241f1a;
+  --color-ink-300: #6f6455;
+  --color-ink-500: #b8b0a3;
+  --color-ink-700: #d9d2c4;
+  --color-ink-900: #f5f1e8;
+
+  --surface-raised: #252019;
+  --text-heading: var(--color-leaf-300);
+
+  --shadow-resting: 0 2px 4px rgba(0, 0, 0, 0.24), 0 10px 30px rgba(0, 0, 0, 0.32);
+  --shadow-tray: 0 3px 5px rgba(0, 0, 0, 0.28), 0 18px 45px rgba(0, 0, 0, 0.36);
+  --shadow-floating: 0 10px 22px rgba(0, 0, 0, 0.3), 0 30px 70px rgba(0, 0, 0, 0.4);
+}
+
 @theme inline {
   --color-canvas-50: var(--color-canvas-50);
   --color-canvas-100: var(--color-canvas-100);
@@ -193,6 +239,15 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: light dark;
+  }
+
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
   }
 
   body {
@@ -234,5 +289,31 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Printable activity/blog guides: header, footer, nav and interactive
+   chrome disappear; the content itself prints in plain, ink-friendly type. */
+@media print {
+  header,
+  footer,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .shadow-resting,
+  .shadow-tray,
+  .shadow-floating {
+    box-shadow: none !important;
   }
 }

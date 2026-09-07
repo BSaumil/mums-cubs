@@ -90,23 +90,26 @@ Everything under `src/`, `public/images/placeholders/`, `scripts/generate-placeh
 
 ## Known external blockers
 
-- No production photography or photography consent exists → every image is a clearly labelled placeholder
-  (see asset manifest). This cannot be resolved from within this environment; it needs a real photo shoot
-  or a licensed stock/illustration budget and sign-off from the product owner.
+See [`MUMS_CUBS_BLOCKERS.md`](./MUMS_CUBS_BLOCKERS.md) for the current, authoritative list (production
+photography, chanting/pronunciation audio, testimonials, email sending, materials marketplace, referral
+program, premium/payments, translation, expert partnerships, and Vercel deployment). None of these are
+faked or stubbed — each is either labelled honestly in-product or left unbuilt.
 
-## Not built (P1/P2 — scoped out of this pass, not silently dropped)
+## Later build passes
 
-Interactive Whole-Child mind map, animated dual-track Daily Rhythm timeline, Five Elements interactive
-grid, sound/phonetics audio visualiser, customisable rhythm builder, saved-activity/observation-journal/
-child-profile personalisation, analytics event wiring, and the full numeric type-scale tokens. None of
-these were faked or stubbed with placeholder interactivity — `/rhythm` and `/philosophy` say plainly that
-the customisable builder is "planned next" rather than pretending to be one.
+A subsequent pass (see `MUMS_CUBS_PRODUCT_ARCHITECTURE.md`'s "Client-side tools added since the P0 build")
+implemented the interactive modules this report originally listed as not built: the Whole-Child mind map,
+the Daily Rhythm dual-track timeline, the Five Elements grid, and a customisable rhythm builder, plus
+JSON-LD structured data, dynamic OG images, global search, a print stylesheet, a light/dark theme toggle,
+a growth/milestone log, and a newsletter waitlist with digest preview — all localStorage-backed, all
+covered by `vitest`/`playwright`, none faking a capability (like real email delivery) that isn't there.
+The sound/phonetics audio visualiser and all account-based P2 personalisation remain blocked on real audio
+recordings and a real backend respectively — see the blockers doc.
 
 ## Definition of Done
 
-**PARTIAL.** P0 (architecture, design system, homepage, curriculum hub, accessibility baseline,
-performance basics, full QA/test/build gate, documentation) is complete and passes every applicable check
-in Section 38. P1's interactive modules (mind map, rhythm timeline, elements grid, sound visualiser) and
-all of P2 (personalisation) are not implemented — this was a scope decision made explicit with the user
-before starting (see conversation), not a discovered limitation. They remain clearly documented as future
-work rather than claimed as done.
+P0 (architecture, design system, homepage, curriculum hub, accessibility baseline, performance basics, full
+QA/test/build gate, documentation) is complete. The interactive P1 modules and most of P2's non-payment,
+non-account-based scope are now also complete (see "Later build passes" above). What remains undone is
+gated on genuine external blockers documented in `MUMS_CUBS_BLOCKERS.md`, not a discovered limitation or a
+silently dropped scope item.

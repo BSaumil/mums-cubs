@@ -6,7 +6,20 @@ import { learningFrameworks } from "@/lib/content/learning-frameworks";
 const BASE_URL = "https://mumsandcubs.example.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/discover", "/curriculum", "/materials", "/blog", "/rhythm", "/parents", "/philosophy"].map(
+  const staticRoutes = [
+    "",
+    "/discover",
+    "/curriculum",
+    "/materials",
+    "/blog",
+    "/rhythm",
+    "/parents",
+    "/philosophy",
+    "/search",
+    "/elements",
+    "/growth",
+    "/whole-child",
+  ].map(
     (path) => ({
       url: `${BASE_URL}${path}`,
       changeFrequency: "weekly" as const,
