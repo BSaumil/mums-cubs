@@ -25,14 +25,17 @@ were not built — see [`MUMS_CUBS_BUILD_REPORT.md`](./MUMS_CUBS_BUILD_REPORT.md
 /curriculum/[slug]          One curriculum area — activities, materials, parent notes
 /activities/[slug]          One activity — step-by-step visual sequence
 /materials                  Full material gallery, filterable by category
+/blog                       SEO article hub — 50 posts, filterable by category
+/blog/[slug]                One article, with a related-curriculum-area link where relevant
 /rhythm                     Daily rhythm example sequence
 /parents                    Parent observation guidance + community CTA
 /philosophy                 Content-integrity framework (context labels)
 ```
 
-All dynamic routes (`curriculum/[slug]`, `activities/[slug]`, `discover/[path]`) use
+All dynamic routes (`curriculum/[slug]`, `activities/[slug]`, `discover/[path]`, `blog/[slug]`) use
 `generateStaticParams` and are prerendered (SSG) from the content fixtures. The homepage is
-server-rendered on demand because it reads the `?path=` search param.
+server-rendered on demand because it reads the `?path=` search param. `sitemap.ts` and `robots.ts`
+cover every static and dynamic route, including all 50 blog posts.
 
 ## Data flow
 

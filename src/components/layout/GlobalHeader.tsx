@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { href: "/discover", label: "Discover" },
   { href: "/curriculum", label: "Curriculum" },
   { href: "/materials", label: "Materials" },
+  { href: "/blog", label: "Blog" },
   { href: "/rhythm", label: "Daily Rhythm" },
   { href: "/parents", label: "For Parents" },
 ];
