@@ -4,7 +4,7 @@ import { Icon, type IconName } from "@/components/icons/Icon";
 
 const PATHS: { id: Paradigm; label: string; description: string; icon: IconName }[] = [
   { id: "montessori", label: "Montessori", description: "Hands-on, child-led, prepared environment.", icon: "jug" },
-  { id: "vedic", label: "Vedic", description: "Rhythm, number sense, nature and reflection.", icon: "sun" },
+  { id: "vedic", label: "Vedic", description: "Rhythm, number sense, nature and reflection.", icon: "lotus" },
   { id: "integrated", label: "Integrated", description: "Both paths, read through shared outcomes.", icon: "globe" },
 ];
 

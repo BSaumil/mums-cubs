@@ -10,7 +10,7 @@ export default function ParentsPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
       <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">For Parents</p>
-      <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Watch, don&apos;t direct.</h1>
+      <h1 className="mt-2 text-4xl font-semibold">Watch, don&apos;t direct.</h1>
       <p className="mt-3 max-w-xl text-[var(--text-secondary)]">
         The most useful thing a parent can do at home is observe without correcting. Here is what to look for, area
         by area.
@@ -26,7 +26,7 @@ export default function ParentsPage() {
       </div>
 
       <div className="mt-14 rounded-panel bg-wood-700 p-8 text-center text-white">
-        <h2 className="font-display text-2xl font-semibold">Join Our Community</h2>
+        <h2 className="font-display text-2xl font-semibold text-white">Join Our Community</h2>
         <p className="mt-2 text-white/85">
           A private space for parents to ask questions, share observations, and hear from educators.
         </p>

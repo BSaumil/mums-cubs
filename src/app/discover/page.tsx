@@ -18,7 +18,7 @@ export default function DiscoverPage() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="max-w-2xl">
         <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">Discover</p>
-        <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Choose how you&apos;d like to explore.</h1>
+        <h1 className="mt-2 text-4xl font-semibold">Choose how you&apos;d like to explore.</h1>
         <p className="mt-3 text-[var(--text-secondary)]">
           Each path keeps its own integrity — nothing here is blended into a single blurred method.
         </p>

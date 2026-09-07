@@ -22,7 +22,7 @@ export default function PhilosophyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">Our Philosophy</p>
-      <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Two traditions, kept distinct.</h1>
+      <h1 className="mt-2 text-4xl font-semibold">Two traditions, kept distinct.</h1>
       <p className="mt-3 text-[var(--text-secondary)]">
         Montessori and Vedic/Gurukul-inspired learning are complementary, but we never blur historical, scientific,
         pedagogical, religious, cultural or philosophical categories into one another. Every piece of content on
@@ -40,7 +40,7 @@ export default function PhilosophyPage() {
 
       {vedicTraditions.length > 0 ? (
         <section className="mt-12 rounded-panel bg-saffron-50 p-6">
-          <h2 className="text-lg font-semibold text-[var(--text-primary)]">A worked example</h2>
+          <h2 className="text-lg font-semibold">A worked example</h2>
           {vedicTraditions.map((tradition) => (
             <p key={tradition.id} className="mt-2 text-sm text-[var(--text-secondary)]">
               <strong className="text-[var(--text-primary)]">{tradition.title}:</strong> {tradition.summary}
