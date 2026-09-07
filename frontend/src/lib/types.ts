@@ -120,6 +120,7 @@ export interface CulturalContext {
   id: string;
   title: string;
   summary: string;
+  visual?: VisualAsset;
 }
 
 export interface LearningFramework {

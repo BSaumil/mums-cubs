@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ContextLabel } from "@/lib/types";
 import { learningFrameworks } from "@/lib/content/learning-frameworks";
+import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 
 export const metadata: Metadata = {
   title: "Our Philosophy",
@@ -29,6 +30,24 @@ export default function PhilosophyPage() {
         this site carries one of the labels below, so it is always clear what kind of claim is being made.
       </p>
 
+      <div className="mt-8 relative aspect-square w-full max-w-sm overflow-hidden rounded-panel shadow-floating" data-testid="philosophy-mindfulness-visual">
+        <ResponsiveArt
+          asset={{
+            id: "mc-real-gratitude-mindfulness-1200",
+            src: "/images/real/mc-real-gratitude-mindfulness-1200.png",
+            alt: "A child pausing to reflect, journal in hand — gratitude and mindfulness practice.",
+            width: 1254,
+            height: 1254,
+            type: "photo",
+            dominantTone: "clay",
+            isPlaceholder: false,
+          }}
+          fill
+          sizes="384px"
+          className="object-cover"
+        />
+      </div>
+
       <dl className="mt-10 space-y-5">
         {(Object.keys(LABEL_NOTES) as ContextLabel[]).map((label) => (
           <div key={label} className="rounded-card bg-surface-raised p-5 shadow-resting">
@@ -42,9 +61,16 @@ export default function PhilosophyPage() {
         <section className="mt-12 rounded-panel bg-saffron-50 p-6">
           <h2 className="text-lg font-semibold text-[var(--text-primary)]">A worked example</h2>
           {vedicTraditions.map((tradition) => (
-            <p key={tradition.id} className="mt-2 text-sm text-[var(--text-secondary)]">
-              <strong className="text-[var(--text-primary)]">{tradition.title}:</strong> {tradition.summary}
-            </p>
+            <div key={tradition.id} className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start">
+              {tradition.visual ? (
+                <div className="relative aspect-square w-full shrink-0 overflow-hidden rounded-card shadow-resting sm:w-40" data-testid={`tradition-visual-${tradition.id}`}>
+                  <ResponsiveArt asset={tradition.visual} fill sizes="160px" className="object-cover" />
+                </div>
+              ) : null}
+              <p className="text-sm text-[var(--text-secondary)]">
+                <strong className="text-[var(--text-primary)]">{tradition.title}:</strong> {tradition.summary}
+              </p>
+            </div>
           ))}
         </section>
       ) : null}

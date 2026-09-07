@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CurriculumAreaCard } from "@/components/cards/CurriculumAreaCard";
 import { VisualBadge } from "@/components/ui/VisualBadge";
+import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 import { getFramework, isFrameworkId, learningFrameworks } from "@/lib/content/learning-frameworks";
 
 interface DiscoverPathPageProps {
@@ -43,9 +44,16 @@ export default async function DiscoverPathPage({ params }: DiscoverPathPageProps
         <section className="mt-10 rounded-panel bg-saffron-50 p-6">
           <p className="text-xs font-semibold uppercase tracking-wide text-saffron-700">Cultural / Philosophical Framework</p>
           {framework.traditions.map((tradition) => (
-            <div key={tradition.id} className="mt-2">
-              <h2 className="font-semibold text-[var(--text-primary)]">{tradition.title}</h2>
-              <p className="mt-1 text-sm text-[var(--text-secondary)]">{tradition.summary}</p>
+            <div key={tradition.id} className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start">
+              {tradition.visual ? (
+                <div className="relative aspect-square w-full shrink-0 overflow-hidden rounded-card shadow-resting sm:w-40" data-testid={`tradition-visual-${tradition.id}`}>
+                  <ResponsiveArt asset={tradition.visual} fill sizes="160px" className="object-cover" />
+                </div>
+              ) : null}
+              <div>
+                <h2 className="font-semibold text-[var(--text-primary)]">{tradition.title}</h2>
+                <p className="mt-1 text-sm text-[var(--text-secondary)]">{tradition.summary}</p>
+              </div>
             </div>
           ))}
         </section>

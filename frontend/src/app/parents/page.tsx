@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { curriculumAreas } from "@/lib/content/curriculum-areas";
+import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 
 export const metadata: Metadata = {
   title: "For Parents",
@@ -15,6 +16,24 @@ export default function ParentsPage() {
         The most useful thing a parent can do at home is observe without correcting. Here is what to look for, area
         by area.
       </p>
+
+      <div className="mt-8 relative aspect-square w-full max-w-sm overflow-hidden rounded-panel shadow-floating" data-testid="parents-character-visual">
+        <ResponsiveArt
+          asset={{
+            id: "mc-real-character-development-1200",
+            src: "/images/real/mc-real-character-development-1200.png",
+            alt: "Two children sharing and building together — character development in action.",
+            width: 1254,
+            height: 1254,
+            type: "photo",
+            dominantTone: "wood",
+            isPlaceholder: false,
+          }}
+          fill
+          sizes="384px"
+          className="object-cover"
+        />
+      </div>
 
       <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {curriculumAreas.map((area) => (

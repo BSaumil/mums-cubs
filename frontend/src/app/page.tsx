@@ -4,11 +4,13 @@ import { PathNavigator } from "@/components/home/PathNavigator";
 import { PathCards } from "@/components/home/PathCards";
 import { DiscoverySection } from "@/components/home/DiscoverySection";
 import { GlimpseGallery } from "@/components/home/GlimpseGallery";
+import { RealMomentsGallery } from "@/components/home/RealMomentsGallery";
 import { MaterialGallery } from "@/components/home/MaterialGallery";
 import { CurriculumCTA } from "@/components/home/CurriculumCTA";
 import { curriculumAreas } from "@/lib/content/curriculum-areas";
 import { materials } from "@/lib/content/materials";
 import { homepageHeroAssets } from "@/lib/content/home";
+import { realMoments } from "@/lib/content/real-moments";
 import type { Paradigm } from "@/lib/types";
 
 export const metadata: Metadata = {
@@ -57,9 +59,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <>
-      <HeroVisualSplit montessoriHero={homepageHeroAssets.montessori} vedicHero={homepageHeroAssets.vedic} />
+      <HeroVisualSplit montessoriHero={homepageHeroAssets.overview} vedicHero={homepageHeroAssets.vedic} />
 
       <PathCards montessoriHero={homepageHeroAssets.montessori} vedicHero={homepageHeroAssets.vedic} />
+
+      <RealMomentsGallery moments={realMoments} />
 
       <section id="explore" className="mx-auto max-w-7xl scroll-mt-24 px-4 py-4 sm:px-6 lg:px-8">
         <PathNavigator activePath={activePath} />
