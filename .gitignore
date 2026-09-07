@@ -1,0 +1,8 @@
+# Python bytecode — keeps the deploy build context clean.
+__pycache__/
+*.py[cod]
+.ruff_cache/
+
+# NOTE: backend/.env is intentionally NOT ignored. The deploy pipeline reads it
+# during build-context preparation, and the build fails if it is absent.
+# Keep real secrets in the platform secrets manager instead of that file.
