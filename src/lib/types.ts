@@ -168,4 +168,8 @@ export type EducationalEvent =
   | "sound_played"
   | "age_band_changed"
   | "parent_observation_saved"
-  | "blog_post_viewed";
+  | "blog_post_viewed"
+  | "newsletter_signup"
+  | "rhythm_reordered"
+  | "milestone_noted"
+  | "element_opened";

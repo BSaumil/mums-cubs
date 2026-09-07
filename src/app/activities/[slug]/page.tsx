@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { AnalyticsBeacon } from "@/components/analytics/AnalyticsBeacon";
 import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 import { VisualBadge } from "@/components/ui/VisualBadge";
+import { PrintButton } from "@/components/ui/PrintButton";
 import { Icon } from "@/components/icons/Icon";
 import { curriculumAreas, getActivityBySlug } from "@/lib/content/curriculum-areas";
 
@@ -31,9 +32,12 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
   return (
     <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
       <AnalyticsBeacon event="activity_started" properties={{ slug: activity.slug, areaSlug: area.slug }} />
-      <Link href={`/curriculum/${area.slug}`} className="text-sm font-medium text-[var(--text-subtle)] hover:text-[var(--text-primary)]">
-        ← {area.title}
-      </Link>
+      <div className="flex items-center justify-between gap-4">
+        <Link href={`/curriculum/${area.slug}`} className="text-sm font-medium text-[var(--text-subtle)] hover:text-[var(--text-primary)]">
+          ← {area.title}
+        </Link>
+        <PrintButton label="Print this activity" />
+      </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <VisualBadge label={activity.contextLabel} paradigm={area.paradigm} />

@@ -46,6 +46,21 @@ export default function DiscoverPage() {
           </span>
         </div>
       </Link>
+
+      <Link
+        href="/whole-child"
+        className="mt-6 flex items-center justify-between gap-4 rounded-panel bg-surface-raised p-6 shadow-resting hover:shadow-tray"
+      >
+        <div>
+          <h2 className="font-display text-xl font-semibold">Explore the Whole-Child map</h2>
+          <p className="mt-1 text-sm text-[var(--text-secondary)]">
+            See how curriculum areas from both paths connect to eight developmental domains.
+          </p>
+        </div>
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-wood-100 text-wood-700">
+          <Icon name="arrow-right" className="h-5 w-5" />
+        </span>
+      </Link>
     </div>
   );
 }

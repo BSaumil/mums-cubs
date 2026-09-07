@@ -1,26 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Icon, type IconName } from "@/components/icons/Icon";
+import { RhythmBuilder } from "@/components/rhythm/RhythmBuilder";
+import { RhythmTimeline } from "@/components/rhythm/RhythmTimeline";
 import { getCurriculumAreaBySlug } from "@/lib/content/curriculum-areas";
+import { DEFAULT_RHYTHM } from "@/lib/content/rhythm-defaults";
 
 export const metadata: Metadata = {
   title: "Daily Rhythm",
   description: "A sunrise-to-sunset example rhythm — a scaffold for families to adapt, not a schedule to follow exactly.",
 };
-
-const CYCLE: { label: string; icon: IconName }[] = [
-  { label: "Sunrise", icon: "sun" },
-  { label: "Wake", icon: "sun" },
-  { label: "Care of self", icon: "heart" },
-  { label: "Movement", icon: "group" },
-  { label: "Focused learning", icon: "book" },
-  { label: "Nature", icon: "leaf" },
-  { label: "Shared meal", icon: "heart" },
-  { label: "Creative activity", icon: "jug" },
-  { label: "Family time", icon: "group" },
-  { label: "Quiet transition", icon: "moon" },
-  { label: "Sleep", icon: "moon" },
-];
 
 const dailyRhythmArea = getCurriculumAreaBySlug("daily-rhythm");
 
@@ -35,32 +23,18 @@ export default function RhythmPage() {
         enforce.
       </p>
 
-      <ol className="mt-10 space-y-1">
-        {CYCLE.map((moment, index) => (
-          <li key={moment.label} className="flex items-center gap-4 border-l-2 border-sky-300 py-3 pl-5">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sky-50 text-[var(--color-ink-700)]">
-              <Icon name={moment.icon} className="h-4.5 w-4.5" />
-            </span>
-            <span className="text-sm text-[var(--text-subtle)]">{String(index + 1).padStart(2, "0")}</span>
-            <span className="font-medium text-[var(--text-primary)]">{moment.label}</span>
-          </li>
-        ))}
-      </ol>
+      <RhythmTimeline moments={DEFAULT_RHYTHM} />
 
-      <div className="mt-10 rounded-panel bg-surface-muted p-6">
-        <p className="text-sm text-[var(--text-secondary)]">
-          A customisable rhythm builder — where a family arranges and saves their own sequence — is planned next. For
-          now, see it in practice through the activity below.
-        </p>
-        {dailyRhythmArea?.activities[0] ? (
-          <Link
-            href={`/activities/${dailyRhythmArea.activities[0].slug}`}
-            className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-wood-700 hover:underline"
-          >
-            See “{dailyRhythmArea.activities[0].title}” →
+      <RhythmBuilder />
+
+      {dailyRhythmArea?.activities[0] ? (
+        <p className="mt-6 text-sm text-[var(--text-secondary)]">
+          See a rhythm moment in practice:{" "}
+          <Link href={`/activities/${dailyRhythmArea.activities[0].slug}`} className="font-medium text-wood-700 hover:underline">
+            {dailyRhythmArea.activities[0].title}
           </Link>
-        ) : null}
-      </div>
+        </p>
+      ) : null}
     </div>
   );
 }

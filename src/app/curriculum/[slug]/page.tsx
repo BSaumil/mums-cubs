@@ -8,7 +8,9 @@ import { PhotoTray } from "@/components/cards/PhotoTray";
 import { MaterialObjectCard } from "@/components/cards/MaterialObjectCard";
 import { ParentJournal } from "@/components/curriculum/ParentJournal";
 import { curriculumAreas, getCurriculumAreaBySlug } from "@/lib/content/curriculum-areas";
+import { DOMAIN_LABEL } from "@/lib/content/development-domains";
 import { getMaterialById } from "@/lib/content/materials";
+import { breadcrumbJsonLd, jsonLdScript } from "@/lib/structured-data";
 
 interface AreaPageProps {
   params: Promise<{ slug: string }>;
@@ -43,6 +45,17 @@ export default async function CurriculumAreaPage({ params }: AreaPageProps) {
   return (
     <article>
       <AnalyticsBeacon event="curriculum_area_viewed" properties={{ slug: area.slug, paradigm: area.paradigm }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdScript(
+            breadcrumbJsonLd([
+              { name: "Curriculum", path: "/curriculum" },
+              { name: area.title, path: `/curriculum/${area.slug}` },
+            ]),
+          ),
+        }}
+      />
       <div className="relative aspect-[16/7] w-full overflow-hidden">
         <ResponsiveArt asset={area.heroAsset} fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink-900)]/70 via-[var(--color-ink-900)]/10 to-transparent" />
@@ -61,9 +74,9 @@ export default async function CurriculumAreaPage({ params }: AreaPageProps) {
           {area.developmentalDomains.map((domain) => (
             <span
               key={domain}
-              className="inline-flex items-center rounded-capsule bg-surface-muted px-3 py-1 text-xs font-medium capitalize text-[var(--text-secondary)]"
+              className="inline-flex items-center rounded-capsule bg-surface-muted px-3 py-1 text-xs font-medium text-[var(--text-secondary)]"
             >
-              {domain}
+              {DOMAIN_LABEL[domain]}
             </span>
           ))}
         </div>
