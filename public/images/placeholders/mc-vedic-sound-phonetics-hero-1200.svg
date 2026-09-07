@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-saffron-wave" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF5DE"/>
+      <stop offset="100%" stop-color="#FFE9B7"/>
+    </linearGradient>
+    <radialGradient id="blob-saffron-wave" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFE9B7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFE9B7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g-saffron-wave)"/>
+  <rect width="1200" height="800" fill="url(#blob-saffron-wave)"/>
+  <g transform="translate(600 400) scale(3.6363636363636362)">
+    
+    <path d="M-44 0 Q-33 -34 -22 0 Q-11 34 0 0 Q11 -34 22 0 Q33 34 44 0" fill="none" stroke="#D99121" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  </g>
+</svg>
