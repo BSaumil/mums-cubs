@@ -56,14 +56,13 @@ export default async function CurriculumAreaPage({ params }: AreaPageProps) {
           ),
         }}
       />
-      <div className="relative aspect-[16/7] w-full overflow-hidden">
-        <ResponsiveArt asset={area.heroAsset} fill priority sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink-900)]/70 via-[var(--color-ink-900)]/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
-          <VisualBadge label={area.contextLabel} paradigm={area.paradigm} />
-          <h1 className="mt-3 font-display text-4xl font-semibold text-white sm:text-5xl">{area.title}</h1>
-          <p className="mt-2 max-w-xl text-white/90">{area.leadSentence}</p>
+      <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
+        <div className="relative aspect-square w-full max-w-2xl overflow-hidden rounded-hero shadow-floating sm:aspect-[16/9] sm:max-w-none" data-testid={`curriculum-area-hero-${area.slug}`}>
+          <ResponsiveArt asset={area.heroAsset} fill priority sizes="(min-width: 1024px) 1200px, 100vw" className="object-cover" />
         </div>
+        <VisualBadge label={area.contextLabel} paradigm={area.paradigm} />
+        <h1 className="mt-3 font-display text-4xl font-semibold text-[var(--text-primary)] sm:text-5xl">{area.title}</h1>
+        <p className="mt-2 max-w-xl text-[var(--text-secondary)]">{area.leadSentence}</p>
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">

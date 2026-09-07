@@ -9,7 +9,7 @@ export function CurriculumAreaCard({ area, priority }: { area: CurriculumArea; p
       href={`/curriculum/${area.slug}`}
       className="group block overflow-hidden rounded-card bg-surface-raised shadow-resting transition-shadow duration-[var(--duration-hover)] ease-[var(--ease-standard)] hover:shadow-tray focus-visible:shadow-tray"
     >
-      <div className="relative aspect-[3/2] overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden">
         <ResponsiveArt
           asset={area.heroAsset}
           fill

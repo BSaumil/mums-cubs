@@ -16,7 +16,7 @@ const integratedAsset = getCurriculumAreaBySlug("culture-science")!.heroAsset;
 export default function DiscoverPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-hero shadow-floating sm:aspect-[21/9]" data-testid="discover-hub-hero">
+      <div className="relative mb-10 aspect-square w-full max-w-2xl overflow-hidden rounded-hero shadow-floating sm:aspect-[16/9] sm:max-w-none" data-testid="discover-hub-hero">
         <ResponsiveArt
           asset={{
             id: "mc-gen-discover-hub-1024",

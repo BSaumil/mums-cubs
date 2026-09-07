@@ -27,7 +27,7 @@ export default async function DiscoverPathPage({ params }: DiscoverPathPageProps
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       {framework.heroVisual ? (
-        <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-hero shadow-floating sm:aspect-[21/9]" data-testid={`discover-hero-${framework.id}`}>
+        <div className="relative mb-10 aspect-square w-full max-w-2xl overflow-hidden rounded-hero shadow-floating sm:aspect-[16/9] sm:max-w-none" data-testid={`discover-hero-${framework.id}`}>
           <ResponsiveArt asset={framework.heroVisual} fill priority sizes="100vw" className="object-cover" />
         </div>
       ) : null}

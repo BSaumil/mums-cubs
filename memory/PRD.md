@@ -18,6 +18,8 @@ Greenfield Next.js site for "Mums & Cubs" — a Montessori + Vedic/Gurukul-inspi
 - **2026-09-07**: Generated 8 new brand-styled hero banners (Gemini image gen, matching official logo/palette) for previously text-only pages: `/discover`, `/discover/montessori`, `/discover/vedic` (v2), `/discover/integrated`, `/curriculum`, `/materials`, Buttoning Frame activity, and a "Join Our Community" banner (used on homepage CTA + `/parents`). Also added the real Daily Rhythm photo as hero on `/rhythm`.
 - **2026-09-07**: Replaced placeholder nav/footer logo with real official logo (cropped from user-supplied brand guide) in `BrandMark.tsx` + generated real `favicon.ico`. Removed outdated "placeholder art" note from footer.
 
+- **2026-09-07 (makeover)**: Fixed image-crop/legibility issues introduced by the new real photos: `CurriculumAreaPage` hero previously overlaid HTML title/badge text directly on top of branded photos that already had baked-in text, causing double-text collisions — restructured to the "banner above heading" pattern used elsewhere (no overlay). Softened aggressive crops sitewide: hub hero banners (`/discover`, `/curriculum`, `/materials`, `/discover/[path]`) went from `16/9→21/9` (heavy crop, cut off icon rows) to `square on mobile → 16/9 on desktop` (full image on mobile, gentle crop on desktop). `CurriculumAreaCard` grid thumbnail eased from `3/2` to `4/3`.
+
 ## Known gaps / not yet real photos
 - Montessori's `sensorial` sound-cylinders material, `nature-collection-tray`, `wooden-abacus`, `rhythm-cards` materials — still placeholder SVGs (Materials Hub gallery).
 - No dedicated Montessori hub page hero photo distinct from generated banner (reused generated banner only).
