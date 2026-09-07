@@ -12,7 +12,7 @@ export default function MaterialsPage() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="max-w-2xl">
         <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">Materials</p>
-        <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">The whole shelf, in one place.</h1>
+        <h1 className="mt-2 text-4xl font-semibold">The whole shelf, in one place.</h1>
         <p className="mt-3 text-[var(--text-secondary)]">
           Every material is real, self-correcting where possible, and sized for a child to use independently.
         </p>

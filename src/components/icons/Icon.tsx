@@ -3,9 +3,11 @@ import type { SVGProps } from "react";
 /**
  * Shared line-icon language: rounded endpoints, ~1.75 stroke, minimal
  * internal detail. Functional-only icons (menu, close, search, arrow) live
- * here alongside the brand's custom subject icons (leaf, heart, group, sun,
- * jug, book, globe, wave) so nothing falls back to a generic icon pack for
- * the product's dominant visual identity.
+ * here alongside the brand's custom subject icons — leaf, heart, group, sun,
+ * jug, book, globe, wave, plus the brand guide's own "Brand Elements" row
+ * (heart=Love, leaf=Growth, sun=Brighter Tomorrows, lotus=Inner Wisdom,
+ * tree=Strong Foundations) — so nothing falls back to a generic icon pack
+ * for the product's dominant visual identity.
  */
 export type IconName =
   | "leaf"
@@ -17,6 +19,8 @@ export type IconName =
   | "book"
   | "globe"
   | "wave"
+  | "lotus"
+  | "tree"
   | "menu"
   | "close"
   | "search"
@@ -33,6 +37,8 @@ const PATHS: Record<IconName, string> = {
   book: "M4 5.5c2-1 4.5-1 8 .5 3.5-1.5 6-1.5 8-.5v13c-2-1-4.5-1-8 .5-3.5-1.5-6-1.5-8-.5Z M12 6v13",
   globe: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z M3 12h18 M12 3c2.5 2.4 4 5.6 4 9s-1.5 6.6-4 9c-2.5-2.4-4-5.6-4-9s1.5-6.6 4-9Z",
   wave: "M2 12c1.7-3 3.3-3 5 0s3.3 3 5 0 3.3-3 5 0 3.3 3 5 0",
+  lotus: "M12 21c-4-1-6.5-4-6.5-7.5C7.5 15 9.7 15.8 12 16c2.3-.2 4.5-1 6.5-2.5C18.5 17 16 20 12 21Z M12 16c-1.5-2-1.8-5-.5-8.5C13 10.5 14 13 12 16Z M12 16c-3-1.2-4.7-3.3-5.3-6.3C9.8 10.3 11.6 12.5 12 16Z M12 16c3-1.2 4.7-3.3 5.3-6.3C14.2 10.3 12.4 12.5 12 16Z",
+  tree: "M12 3 6.5 11h3L5 19h6M12 3l5.5 8h-3L19 19h-6 M12 15v6",
   menu: "M4 7h16 M4 12h16 M4 17h16",
   close: "M6 6l12 12 M18 6 6 18",
   search: "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z M21 21l-4.3-4.3",

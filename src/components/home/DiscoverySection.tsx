@@ -22,7 +22,7 @@ export function DiscoverySection({ paradigm, title, lead, areas }: DiscoverySect
           >
             {paradigm === "vedic" ? "Gurukul-Inspired Discovery" : "Montessori Discovery"}
           </p>
-          <h2 className="mt-2 text-3xl font-semibold text-[var(--text-primary)]">{title}</h2>
+          <h2 className="mt-2 text-3xl font-semibold">{title}</h2>
           <p className="mt-2 text-[var(--text-secondary)]">{lead}</p>
         </div>
         <Link

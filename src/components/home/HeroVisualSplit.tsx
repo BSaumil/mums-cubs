@@ -4,10 +4,10 @@ import { Icon, type IconName } from "@/components/icons/Icon";
 import type { VisualAsset } from "@/lib/types";
 
 const FEATURES: { icon: IconName; label: string }[] = [
-  { icon: "leaf", label: "Child-Led Learning" },
-  { icon: "heart", label: "Timeless Wisdom" },
-  { icon: "group", label: "Stronger Values" },
-  { icon: "sun", label: "Brighter Futures" },
+  { icon: "leaf", label: "Curious" },
+  { icon: "sun", label: "Confident" },
+  { icon: "heart", label: "Compassionate" },
+  { icon: "group", label: "Connected" },
 ];
 
 interface HeroVisualSplitProps {
@@ -20,7 +20,11 @@ export function HeroVisualSplit({ montessoriHero, vedicHero }: HeroVisualSplitPr
     <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pt-16">
       <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div>
-          <h1 className="text-4xl font-semibold leading-[1.05] text-[var(--text-primary)] sm:text-5xl lg:text-6xl">
+          <p className="flex items-center gap-1.5 font-display text-base italic text-[var(--color-love)]">
+            <Icon name="heart" className="h-4 w-4" />
+            More than learning, a brighter tomorrow.
+          </p>
+          <h1 className="mt-2 text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl">
             Small Hands.
             <br />
             Big Possibilities.

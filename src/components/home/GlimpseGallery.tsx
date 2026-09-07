@@ -16,7 +16,7 @@ export function GlimpseGallery({ areas }: { areas: CurriculumArea[] }) {
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-semibold text-[var(--text-primary)] sm:text-4xl">A Glimpse Into Their World</h2>
+          <h2 className="text-3xl font-semibold sm:text-4xl">A Glimpse Into Their World</h2>
           <p className="mt-2 text-[var(--text-secondary)]">Real materials. Real moments. Real growth.</p>
         </div>
         <Link href="/curriculum" className="text-sm font-medium text-[var(--text-primary)] hover:underline">

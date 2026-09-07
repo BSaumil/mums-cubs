@@ -28,7 +28,7 @@ export default function RhythmPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-ink-700)]">Gurukul-Inspired Practice</p>
-      <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Dinacharya / Daily Rhythm</h1>
+      <h1 className="mt-2 text-4xl font-semibold">Dinacharya / Daily Rhythm</h1>
       <p className="mt-3 text-[var(--text-secondary)]">
         Repeated rhythms help children understand sequence, transition and rest. What follows is one illustrative
         example — every family&apos;s rhythm looks different, and this is a scaffold to adapt, not a schedule to
