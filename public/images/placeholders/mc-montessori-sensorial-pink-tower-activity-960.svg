@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200" width="960" height="1200" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-clay-tower" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FBEDE7"/>
+      <stop offset="100%" stop-color="#F5D9CE"/>
+    </linearGradient>
+    <radialGradient id="blob-clay-tower" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#F5D9CE" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#F5D9CE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#g-clay-tower)"/>
+  <rect width="960" height="1200" fill="url(#blob-clay-tower)"/>
+  <g transform="translate(480 600) scale(4.363636363636363)">
+    
+    <rect x="-34" y="34" width="68" height="20" rx="4" fill="none" stroke="#C76D50" stroke-width="4"/>
+    <rect x="-26" y="10" width="52" height="20" rx="4" fill="none" stroke="#C76D50" stroke-width="4"/>
+    <rect x="-18" y="-14" width="36" height="20" rx="4" fill="none" stroke="#C76D50" stroke-width="4"/>
+    <rect x="-10" y="-38" width="20" height="20" rx="4" fill="none" stroke="#C76D50" stroke-width="4"/>
+  
+  </g>
+</svg>

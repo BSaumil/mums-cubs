@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200" width="960" height="1200" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-wood-button" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5ECE0"/>
+      <stop offset="100%" stop-color="#E9D8C3"/>
+    </linearGradient>
+    <radialGradient id="blob-wood-button" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#E9D8C3" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E9D8C3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#g-wood-button)"/>
+  <rect width="960" height="1200" fill="url(#blob-wood-button)"/>
+  <g transform="translate(480 600) scale(4.363636363636363)">
+    
+    <circle cx="-16" cy="0" r="18" fill="none" stroke="#9B6B43" stroke-width="4"/>
+    <circle cx="-19" cy="-4" r="2.2" fill="#9B6B43"/>
+    <circle cx="-13" cy="-4" r="2.2" fill="#9B6B43"/>
+    <circle cx="-19" cy="4" r="2.2" fill="#9B6B43"/>
+    <circle cx="-13" cy="4" r="2.2" fill="#9B6B43"/>
+    <path d="M4 -22 Q40 0 4 22" fill="none" stroke="#9B6B43" stroke-width="4" stroke-linecap="round"/>
+  
+  </g>
+</svg>

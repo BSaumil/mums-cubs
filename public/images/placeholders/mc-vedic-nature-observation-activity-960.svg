@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200" width="960" height="1200" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-leaf-leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFF4EC"/>
+      <stop offset="100%" stop-color="#DEE8D8"/>
+    </linearGradient>
+    <radialGradient id="blob-leaf-leaf" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#DEE8D8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#DEE8D8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#g-leaf-leaf)"/>
+  <rect width="960" height="1200" fill="url(#blob-leaf-leaf)"/>
+  <g transform="translate(480 600) scale(4.363636363636363)">
+    
+    <path d="M0 -46 Q40 -30 40 8 Q40 44 0 46 Q-40 44 -40 8 Q-40 -30 0 -46 Z" fill="none" stroke="#738E63" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M0 -40 L0 44" fill="none" stroke="#738E63" stroke-width="3" stroke-linecap="round"/>
+  
+  </g>
+</svg>
