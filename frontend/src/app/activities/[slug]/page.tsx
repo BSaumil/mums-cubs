@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AnalyticsBeacon } from "@/components/analytics/AnalyticsBeacon";
 import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 import { VisualBadge } from "@/components/ui/VisualBadge";
+import { PrintButton } from "@/components/ui/PrintButton";
 import { Icon } from "@/components/icons/Icon";
 import { curriculumAreas, getActivityBySlug } from "@/lib/content/curriculum-areas";
 
@@ -29,9 +31,13 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
 
   return (
     <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-      <Link href={`/curriculum/${area.slug}`} className="text-sm font-medium text-[var(--text-subtle)] hover:text-[var(--text-primary)]">
-        ← {area.title}
-      </Link>
+      <AnalyticsBeacon event="activity_started" properties={{ slug: activity.slug, areaSlug: area.slug }} />
+      <div className="flex items-center justify-between gap-4">
+        <Link href={`/curriculum/${area.slug}`} className="text-sm font-medium text-[var(--text-subtle)] hover:text-[var(--text-primary)]">
+          ← {area.title}
+        </Link>
+        <PrintButton label="Print this activity" />
+      </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <VisualBadge label={activity.contextLabel} paradigm={area.paradigm} />
@@ -39,7 +45,7 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
         <VisualBadge label={activity.environment === "either" ? "Indoor or outdoor" : activity.environment} />
       </div>
 
-      <h1 className="mt-4 text-4xl font-semibold text-[var(--text-primary)]">{activity.title}</h1>
+      <h1 className="mt-4 text-4xl font-semibold">{activity.title}</h1>
       <p className="mt-2 text-lg text-[var(--text-secondary)]">{activity.objective}</p>
 
       <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-hero shadow-floating">
@@ -65,7 +71,7 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
 
       {activity.materials.length > 0 ? (
         <section className="mt-12">
-          <h2 className="text-lg font-semibold text-[var(--text-primary)]">Materials</h2>
+          <h2 className="text-lg font-semibold">Materials</h2>
           <ul className="mt-2 flex flex-wrap gap-2">
             {activity.materials.map((material) => (
               <li key={material.materialId} className="rounded-capsule bg-surface-muted px-3 py-1 text-sm text-[var(--text-secondary)]">
@@ -77,7 +83,7 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
       ) : null}
 
       <section className="mt-10 rounded-panel bg-surface-muted p-8">
-        <h2 className="text-lg font-semibold text-[var(--text-primary)]">What you might observe</h2>
+        <h2 className="text-lg font-semibold">What you might observe</h2>
         <ul className="mt-3 space-y-1.5 text-[var(--text-secondary)]">
           {activity.observableOutcomes.map((outcome) => (
             <li key={outcome}>· {outcome}</li>

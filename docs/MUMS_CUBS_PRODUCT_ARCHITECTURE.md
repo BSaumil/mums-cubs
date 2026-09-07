@@ -25,14 +25,21 @@ were not built — see [`MUMS_CUBS_BUILD_REPORT.md`](./MUMS_CUBS_BUILD_REPORT.md
 /curriculum/[slug]          One curriculum area — activities, materials, parent notes
 /activities/[slug]          One activity — step-by-step visual sequence
 /materials                  Full material gallery, filterable by category
-/rhythm                     Daily rhythm example sequence
-/parents                    Parent observation guidance + community CTA
+/blog                       SEO article hub — 50 posts, filterable by category
+/blog/[slug]                One article, with a related-curriculum-area link where relevant
+/rhythm                     Daily rhythm dual-track timeline + reorderable rhythm builder
+/parents                    Parent observation guidance, growth/rhythm tool teasers, digest preview, newsletter waitlist, community CTA
 /philosophy                 Content-integrity framework (context labels)
+/whole-child                Whole-Child map — 8 developmental domains × curriculum areas (ARIA tabs + panel)
+/elements                   Five Elements (Pancha Mahabhuta) interactive grid — ARIA tabs + panel
+/growth                     Private, per-device growth/milestone log
+/search                     Site-wide search across curriculum, materials, activities, blog
 ```
 
-All dynamic routes (`curriculum/[slug]`, `activities/[slug]`, `discover/[path]`) use
+All dynamic routes (`curriculum/[slug]`, `activities/[slug]`, `discover/[path]`, `blog/[slug]`) use
 `generateStaticParams` and are prerendered (SSG) from the content fixtures. The homepage is
-server-rendered on demand because it reads the `?path=` search param.
+server-rendered on demand because it reads the `?path=` search param. `sitemap.ts` and `robots.ts`
+cover every static and dynamic route, including all 50 blog posts.
 
 ## Data flow
 
@@ -69,9 +76,23 @@ RootLayout
 Reusable primitives: `PhotoTray`, `CurriculumAreaCard`, `MaterialObjectCard`, `VisualBadge`, `Icon`
 (custom line-icon set), `ResponsiveArt` (the one place every image passes through `next/image`).
 
-## Not built in this pass (see build report for the full list)
+## Client-side tools added since the P0 build
 
-Interactive Whole-Child mind map, animated Daily Rhythm dual-track timeline, Five Elements interactive
-grid, sound/phonetics audio visualiser, and all P2 personalisation (saved activities, child profiles,
-progress visualisation). `/rhythm` and `/philosophy` exist with real, honest content but are intentionally
-static rather than faking an interactive feature that wasn't built.
+All localStorage-backed, per-device, no-backend — each says so in its own copy:
+
+- **Rhythm builder** (`/rhythm`) — reorder, add, remove moments; resets to the illustrative example.
+- **Growth notes** (`/growth`) — dated, domain-tagged observations; explicitly framed as not a medical or
+  developmental screening tool.
+- **Newsletter waitlist + digest preview** (`/parents`) — email saved on-device only; digest is a live
+  preview of what a real send would contain, not a real subscription (no email service is wired up — see
+  `MUMS_CUBS_BLOCKERS.md`).
+- **Mark-as-read** on blog posts, **light/dark theme** (persisted, system-preference-aware, no
+  hydration-mismatch flash via a `beforeInteractive` init script).
+
+## Not built (see `MUMS_CUBS_BLOCKERS.md` for genuine external blockers)
+
+Sound/phonetics audio visualiser (needs real chanting/pronunciation recordings — a genuine content
+blocker) and all P2 personalisation beyond what's listed above (child profiles across devices, longitudinal
+progress visualisation tied to a real account system). The Whole-Child mind map, Daily Rhythm dual-track
+timeline, and Five Elements grid that earlier revisions of this document listed as "not built" are now
+implemented — see the routing table above.

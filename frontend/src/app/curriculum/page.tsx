@@ -32,7 +32,7 @@ export default function CurriculumHubPage() {
 
       <header className="max-w-2xl">
         <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">Curriculum Hub</p>
-        <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Every area, one visual map.</h1>
+        <h1 className="mt-2 text-4xl font-semibold">Every area, one visual map.</h1>
         <p className="mt-3 text-[var(--text-secondary)]">
           Nine curriculum areas across two paths — filter by path and age to find where your child is right now.
         </p>

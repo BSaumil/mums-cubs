@@ -1,55 +1,68 @@
 @import "tailwindcss";
 
 /*
- * Mums & Cubs design tokens.
- * Semantic surface/text/paradigm variables live here so components never
- * reach for raw hex values. See docs/MUMS_CUBS_DESIGN_SYSTEM.md.
+ * Mums & Cubs design tokens — official brand palette.
+ * Base swatches (Sage Green / Earth Brown / Terracotta / Sand / Leaf Green /
+ * Peach / Sky Blue / Blush) come from the brand style guide; every other
+ * shade in a family is a computed tint/shade around that anchor so the
+ * existing semantic names (wood/clay/leaf/saffron/sky/canvas/ink) keep
+ * working everywhere they're already used. See docs/MUMS_CUBS_DESIGN_SYSTEM.md.
  */
 :root {
-  --color-canvas-50: #fffdf8;
-  --color-canvas-100: #faf7ef;
-  --color-canvas-200: #f4eee1;
+  --color-canvas-50: #fffcf7;
+  --color-canvas-100: #fbf3e6;
+  --color-canvas-200: #f8ebd7; /* official Sand */
 
-  --color-wood-50: #f5ece0;
-  --color-wood-100: #e9d8c3;
-  --color-wood-300: #c79e73;
-  --color-wood-500: #9b6b43;
-  --color-wood-700: #70492f;
-  --color-wood-900: #3d291e;
+  /* wood = Earth Brown (Montessori) */
+  --color-wood-50: #f7eae0;
+  --color-wood-100: #edd3be;
+  --color-wood-300: #c98f5e;
+  --color-wood-500: #a65b2e; /* official Earth Brown */
+  --color-wood-700: #7a4020;
+  --color-wood-900: #4a2612;
 
-  --color-clay-50: #fbede7;
-  --color-clay-100: #f5d9ce;
-  --color-clay-300: #de9c84;
-  --color-clay-500: #c76d50;
-  --color-clay-700: #964932;
+  /* clay = Terracotta (secondary warmth) */
+  --color-clay-50: #fdeee4;
+  --color-clay-100: #fbdac2;
+  --color-clay-300: #efa773;
+  --color-clay-500: #e07a3f; /* official Terracotta */
+  --color-clay-700: #8f4318;
 
-  --color-leaf-50: #eff4ec;
-  --color-leaf-100: #dee8d8;
-  --color-leaf-300: #a9be9a;
-  --color-leaf-500: #738e63;
-  --color-leaf-700: #506446;
-  --color-leaf-900: #344230;
+  /* leaf = Sage Green + Leaf Green (nature / growth) */
+  --color-leaf-50: #eef3ec;
+  --color-leaf-100: #dce8d6;
+  --color-leaf-300: #a7c4a0; /* official Leaf Green */
+  --color-leaf-500: #5c8459;
+  --color-leaf-700: #2e5d3a; /* official Sage Green */
+  --color-leaf-900: #1b3821;
 
-  --color-saffron-50: #fff5de;
-  --color-saffron-100: #ffe9b7;
-  --color-saffron-300: #f3c567;
-  --color-saffron-500: #d99121;
-  --color-saffron-600: #bd7313;
-  --color-saffron-700: #90550e;
+  /* saffron = Peach → gold-orange ramp (Vedic accent) */
+  --color-saffron-50: #fff6ea;
+  --color-saffron-100: #fad1a7; /* official Peach */
+  --color-saffron-300: #efb073;
+  --color-saffron-500: #d98a3d;
+  --color-saffron-600: #b96f26;
+  --color-saffron-700: #7a4713;
 
   --color-sunlight-100: #fff4c7;
   --color-sunlight-300: #f6d779;
   --color-sunlight-500: #e8b63a;
 
-  --color-sky-50: #edf6f7;
-  --color-sky-300: #a7cfd3;
-  --color-sky-500: #669da3;
+  /* sky = Sky Blue (possibilities) */
+  --color-sky-50: #eff5fa;
+  --color-sky-300: #8fb8d9; /* official Sky Blue */
+  --color-sky-500: #5a8cb8;
 
-  --color-ink-50: #f5f4f1;
-  --color-ink-300: #b1ada5;
-  --color-ink-500: #706b64;
-  --color-ink-700: #49453f;
-  --color-ink-900: #26231f;
+  /* blush = Love (used sparingly: community/heart accents) */
+  --color-blush-50: #fdf3f3;
+  --color-blush-100: #f8c8c8; /* official Blush */
+  --color-blush-500: #a84b52;
+
+  --color-ink-50: #f6f4f0;
+  --color-ink-300: #b3afa6;
+  --color-ink-500: #665f54;
+  --color-ink-700: #47433b;
+  --color-ink-900: #211e19;
 
   /* Semantic surfaces */
   --surface: var(--color-canvas-50);
@@ -59,6 +72,8 @@
   --text-primary: var(--color-ink-900);
   --text-secondary: var(--color-ink-700);
   --text-subtle: var(--color-ink-500);
+  /* Brand heading colour — the wordmark itself is set in Sage Green. */
+  --text-heading: var(--color-leaf-700);
 
   --montessori: var(--color-wood-500);
   --montessori-soft: var(--color-wood-100);
@@ -68,6 +83,7 @@
 
   --nature: var(--color-leaf-500);
   --focus: var(--color-sky-500);
+  --love: var(--color-blush-500);
 
   /* Radii */
   --radius-seed: 12px;
@@ -91,6 +107,52 @@
   --duration-connection: 400ms;
   --duration-path: 450ms;
   --duration-reveal: 550ms;
+}
+
+/*
+ * Dark theme: only the neutral surface/text/border scale inverts. Brand
+ * accent hues (wood/clay/leaf/saffron/sky/blush) stay put — they're the
+ * identity, not the chrome — except the heading tone, which swaps to a
+ * lighter sage so it still reads against a dark background.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-canvas-50: #1c1815;
+    --color-canvas-100: #241f1a;
+    --color-canvas-200: #2e2820;
+
+    --color-ink-50: #241f1a;
+    --color-ink-300: #6f6455;
+    --color-ink-500: #b8b0a3;
+    --color-ink-700: #d9d2c4;
+    --color-ink-900: #f5f1e8;
+
+    --surface-raised: #252019;
+    --text-heading: var(--color-leaf-300);
+
+    --shadow-resting: 0 2px 4px rgba(0, 0, 0, 0.24), 0 10px 30px rgba(0, 0, 0, 0.32);
+    --shadow-tray: 0 3px 5px rgba(0, 0, 0, 0.28), 0 18px 45px rgba(0, 0, 0, 0.36);
+    --shadow-floating: 0 10px 22px rgba(0, 0, 0, 0.3), 0 30px 70px rgba(0, 0, 0, 0.4);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-canvas-50: #1c1815;
+  --color-canvas-100: #241f1a;
+  --color-canvas-200: #2e2820;
+
+  --color-ink-50: #241f1a;
+  --color-ink-300: #6f6455;
+  --color-ink-500: #b8b0a3;
+  --color-ink-700: #d9d2c4;
+  --color-ink-900: #f5f1e8;
+
+  --surface-raised: #252019;
+  --text-heading: var(--color-leaf-300);
+
+  --shadow-resting: 0 2px 4px rgba(0, 0, 0, 0.24), 0 10px 30px rgba(0, 0, 0, 0.32);
+  --shadow-tray: 0 3px 5px rgba(0, 0, 0, 0.28), 0 18px 45px rgba(0, 0, 0, 0.36);
+  --shadow-floating: 0 10px 22px rgba(0, 0, 0, 0.3), 0 30px 70px rgba(0, 0, 0, 0.4);
 }
 
 @theme inline {
@@ -133,6 +195,10 @@
   --color-sky-300: var(--color-sky-300);
   --color-sky-500: var(--color-sky-500);
 
+  --color-blush-50: var(--color-blush-50);
+  --color-blush-100: var(--color-blush-100);
+  --color-blush-500: var(--color-blush-500);
+
   --color-ink-50: var(--color-ink-50);
   --color-ink-300: var(--color-ink-300);
   --color-ink-500: var(--color-ink-500);
@@ -149,6 +215,7 @@
   --color-vedic-soft: var(--vedic-soft);
   --color-nature: var(--nature);
   --color-focus: var(--focus);
+  --color-love: var(--love);
 
   --radius-seed: var(--radius-seed);
   --radius-card: var(--radius-card);
@@ -172,6 +239,15 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: light dark;
+  }
+
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
   }
 
   body {
@@ -185,7 +261,7 @@
   h3,
   h4 {
     font-family: var(--font-display), Georgia, serif;
-    color: var(--text-primary);
+    color: var(--text-heading);
   }
 
   :focus-visible {
@@ -213,5 +289,31 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Printable activity/blog guides: header, footer, nav and interactive
+   chrome disappear; the content itself prints in plain, ink-friendly type. */
+@media print {
+  header,
+  footer,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .shadow-resting,
+  .shadow-tray,
+  .shadow-floating {
+    box-shadow: none !important;
   }
 }

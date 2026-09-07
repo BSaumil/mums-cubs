@@ -12,11 +12,11 @@ const CATEGORY_LABEL: Record<Material["category"], string> = {
   rhythm: "Rhythm",
 };
 
-export function MaterialObjectCard({ material }: { material: Material }) {
+export function MaterialObjectCard({ material, priority }: { material: Material; priority?: boolean }) {
   return (
     <article className="overflow-hidden rounded-card bg-surface-raised shadow-resting">
       <div className="relative aspect-square overflow-hidden">
-        <ResponsiveArt asset={material.visual} fill sizes="(min-width: 1024px) 240px, 45vw" className="object-cover" />
+        <ResponsiveArt asset={material.visual} fill priority={priority} sizes="(min-width: 1024px) 240px, 45vw" className="object-cover" />
       </div>
       <div className="p-3.5">
         <VisualBadge label={CATEGORY_LABEL[material.category]} paradigm={material.paradigm === "integrated" ? undefined : material.paradigm} />

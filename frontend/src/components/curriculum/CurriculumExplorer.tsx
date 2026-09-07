@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { CurriculumAreaCard } from "@/components/cards/CurriculumAreaCard";
+import { track } from "@/lib/analytics";
 import type { AgeBand, CurriculumArea, Paradigm } from "@/lib/types";
 
 type ParadigmFilter = "all" | Paradigm;
@@ -62,7 +63,10 @@ export function CurriculumExplorer({ areas }: { areas: CurriculumArea[] }) {
                 key={option.id}
                 type="button"
                 aria-pressed={age === option.id}
-                onClick={() => setAge(option.id)}
+                onClick={() => {
+                  setAge(option.id);
+                  track("age_band_changed", { age: option.id });
+                }}
                 className={`min-h-9 rounded-capsule px-3.5 py-1.5 text-sm font-medium transition-colors ${
                   age === option.id ? "bg-wood-700 text-white" : "bg-surface-muted text-[var(--text-secondary)] hover:bg-wood-100"
                 }`}

@@ -134,6 +134,31 @@ export interface LearningFramework {
   traditions?: CulturalContext[];
 }
 
+export type BlogCategory =
+  | "montessori-at-home"
+  | "vedic-at-home"
+  | "integrated"
+  | "age-stages"
+  | "parent-observation"
+  | "materials-spotlight"
+  | "family-life";
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  category: BlogCategory;
+  contextLabel: ContextLabel;
+  paradigm: Paradigm;
+  ageBands: AgeBand[];
+  publishedAt: string; // ISO date
+  readMinutes: number;
+  relatedAreaSlug?: string;
+  /** A small, self-parsed markdown subset: "## " headings, "- " bullets, blank-line-separated paragraphs. */
+  body: string;
+}
+
 export type EducationalEvent =
   | "path_selected"
   | "curriculum_area_viewed"
@@ -144,4 +169,9 @@ export type EducationalEvent =
   | "rhythm_customised"
   | "sound_played"
   | "age_band_changed"
-  | "parent_observation_saved";
+  | "parent_observation_saved"
+  | "blog_post_viewed"
+  | "newsletter_signup"
+  | "rhythm_reordered"
+  | "milestone_noted"
+  | "element_opened";

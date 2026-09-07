@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AnalyticsBeacon } from "@/components/analytics/AnalyticsBeacon";
 import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 import { VisualBadge } from "@/components/ui/VisualBadge";
 import { PhotoTray } from "@/components/cards/PhotoTray";
 import { MaterialObjectCard } from "@/components/cards/MaterialObjectCard";
+import { ParentJournal } from "@/components/curriculum/ParentJournal";
 import { curriculumAreas, getCurriculumAreaBySlug } from "@/lib/content/curriculum-areas";
+import { DOMAIN_LABEL } from "@/lib/content/development-domains";
 import { getMaterialById } from "@/lib/content/materials";
+import { breadcrumbJsonLd, jsonLdScript } from "@/lib/structured-data";
 
 interface AreaPageProps {
   params: Promise<{ slug: string }>;
@@ -40,6 +44,18 @@ export default async function CurriculumAreaPage({ params }: AreaPageProps) {
 
   return (
     <article>
+      <AnalyticsBeacon event="curriculum_area_viewed" properties={{ slug: area.slug, paradigm: area.paradigm }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdScript(
+            breadcrumbJsonLd([
+              { name: "Curriculum", path: "/curriculum" },
+              { name: area.title, path: `/curriculum/${area.slug}` },
+            ]),
+          ),
+        }}
+      />
       <div className="relative aspect-[16/7] w-full overflow-hidden">
         <ResponsiveArt asset={area.heroAsset} fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink-900)]/70 via-[var(--color-ink-900)]/10 to-transparent" />
@@ -58,15 +74,15 @@ export default async function CurriculumAreaPage({ params }: AreaPageProps) {
           {area.developmentalDomains.map((domain) => (
             <span
               key={domain}
-              className="inline-flex items-center rounded-capsule bg-surface-muted px-3 py-1 text-xs font-medium capitalize text-[var(--text-secondary)]"
+              className="inline-flex items-center rounded-capsule bg-surface-muted px-3 py-1 text-xs font-medium text-[var(--text-secondary)]"
             >
-              {domain}
+              {DOMAIN_LABEL[domain]}
             </span>
           ))}
         </div>
 
         <section className="mt-12">
-          <h2 className="text-2xl font-semibold text-[var(--text-primary)]">Activities</h2>
+          <h2 className="text-2xl font-semibold">Activities</h2>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {area.activities.map((activity) => (
               <PhotoTray
@@ -88,23 +104,24 @@ export default async function CurriculumAreaPage({ params }: AreaPageProps) {
 
         {materials.length > 0 ? (
           <section className="mt-14">
-            <h2 className="text-2xl font-semibold text-[var(--text-primary)]">Materials Used</h2>
+            <h2 className="text-2xl font-semibold">Materials Used</h2>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {materials.map((material) => (
-                <MaterialObjectCard key={material.id} material={material} />
+              {materials.map((material, index) => (
+                <MaterialObjectCard key={material.id} material={material} priority={index === 0} />
               ))}
             </div>
           </section>
         ) : null}
 
-        <section className="mt-14 rounded-panel bg-surface-muted p-8">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)]">What to observe as a parent</h2>
-          <p className="mt-2 max-w-2xl text-[var(--text-secondary)]">{area.parentObservation}</p>
+        <section className="mt-14 max-w-2xl rounded-panel bg-surface-muted p-8">
+          <h2 className="text-xl font-semibold">What to observe as a parent</h2>
+          <p className="mt-2 text-[var(--text-secondary)]">{area.parentObservation}</p>
+          <ParentJournal areaSlug={area.slug} />
         </section>
 
         {related.length > 0 ? (
           <section className="mt-14">
-            <h2 className="text-2xl font-semibold text-[var(--text-primary)]">Related Areas</h2>
+            <h2 className="text-2xl font-semibold">Related Areas</h2>
             <ul className="mt-4 flex flex-wrap gap-3">
               {related.map((item) => (
                 <li key={item.id}>

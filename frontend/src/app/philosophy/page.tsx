@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import type { ContextLabel } from "@/lib/types";
 import { learningFrameworks } from "@/lib/content/learning-frameworks";
 import { ResponsiveArt } from "@/components/media/ResponsiveArt";
@@ -23,7 +24,7 @@ export default function PhilosophyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">Our Philosophy</p>
-      <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Two traditions, kept distinct.</h1>
+      <h1 className="mt-2 text-4xl font-semibold">Two traditions, kept distinct.</h1>
       <p className="mt-3 text-[var(--text-secondary)]">
         Montessori and Vedic/Gurukul-inspired learning are complementary, but we never blur historical, scientific,
         pedagogical, religious, cultural or philosophical categories into one another. Every piece of content on
@@ -59,7 +60,7 @@ export default function PhilosophyPage() {
 
       {vedicTraditions.length > 0 ? (
         <section className="mt-12 rounded-panel bg-saffron-50 p-6">
-          <h2 className="text-lg font-semibold text-[var(--text-primary)]">A worked example</h2>
+          <h2 className="text-lg font-semibold">A worked example</h2>
           {vedicTraditions.map((tradition) => (
             <div key={tradition.id} className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start">
               {tradition.visual ? (
@@ -72,6 +73,9 @@ export default function PhilosophyPage() {
               </p>
             </div>
           ))}
+          <Link href="/elements" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-wood-700 hover:underline">
+            Explore the five elements →
+          </Link>
         </section>
       ) : null}
     </div>

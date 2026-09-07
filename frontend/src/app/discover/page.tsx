@@ -37,7 +37,7 @@ export default function DiscoverPage() {
 
       <header className="max-w-2xl">
         <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">Discover</p>
-        <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Choose how you&apos;d like to explore.</h1>
+        <h1 className="mt-2 text-4xl font-semibold">Choose how you&apos;d like to explore.</h1>
         <p className="mt-3 text-[var(--text-secondary)]">
           Each path keeps its own integrity — nothing here is blended into a single blurred method.
         </p>
@@ -64,6 +64,21 @@ export default function DiscoverPage() {
             <Icon name="arrow-right" className="h-5 w-5" />
           </span>
         </div>
+      </Link>
+
+      <Link
+        href="/whole-child"
+        className="mt-6 flex items-center justify-between gap-4 rounded-panel bg-surface-raised p-6 shadow-resting hover:shadow-tray"
+      >
+        <div>
+          <h2 className="font-display text-xl font-semibold">Explore the Whole-Child map</h2>
+          <p className="mt-1 text-sm text-[var(--text-secondary)]">
+            See how curriculum areas from both paths connect to eight developmental domains.
+          </p>
+        </div>
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-wood-100 text-wood-700">
+          <Icon name="arrow-right" className="h-5 w-5" />
+        </span>
       </Link>
     </div>
   );

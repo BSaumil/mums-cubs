@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AnalyticsBeacon } from "@/components/analytics/AnalyticsBeacon";
 import { HeroVisualSplit } from "@/components/home/HeroVisualSplit";
 import { PathNavigator } from "@/components/home/PathNavigator";
 import { PathCards } from "@/components/home/PathCards";
@@ -25,7 +26,8 @@ interface HomePageProps {
 
 export default async function HomePage({ searchParams }: HomePageProps) {
   const params = await searchParams;
-  const activePath: Paradigm = VALID_PATHS.includes(params.path as Paradigm) ? (params.path as Paradigm) : "integrated";
+  const explicitPath = VALID_PATHS.includes(params.path as Paradigm) ? (params.path as Paradigm) : undefined;
+  const activePath: Paradigm = explicitPath ?? "integrated";
 
   const montessoriAreas = curriculumAreas.filter((area) => area.paradigm === "montessori");
   const vedicAreas = curriculumAreas.filter((area) => area.paradigm === "vedic");
@@ -59,6 +61,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <>
+      {explicitPath ? <AnalyticsBeacon event="path_selected" properties={{ path: explicitPath }} /> : null}
+
       <HeroVisualSplit montessoriHero={homepageHeroAssets.overview} vedicHero={homepageHeroAssets.vedic} />
 
       <PathCards montessoriHero={homepageHeroAssets.montessori} vedicHero={homepageHeroAssets.vedic} />
@@ -74,7 +78,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <GlimpseGallery areas={glimpseAreas} />
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-semibold text-[var(--text-primary)] sm:text-4xl">Live Material Gallery</h2>
+        <h2 className="text-3xl font-semibold sm:text-4xl">Live Material Gallery</h2>
         <p className="mt-2 max-w-xl text-[var(--text-secondary)]">
           Every material a child touches, in one place — filter by the kind of work it invites.
         </p>

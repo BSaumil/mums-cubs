@@ -3,7 +3,7 @@ import { Icon, type IconName } from "@/components/icons/Icon";
 
 const PARADIGM_STYLE: Record<Paradigm, { className: string; icon: IconName }> = {
   montessori: { className: "bg-wood-100 text-wood-700", icon: "jug" },
-  vedic: { className: "bg-saffron-100 text-saffron-700", icon: "sun" },
+  vedic: { className: "bg-saffron-100 text-saffron-700", icon: "lotus" },
   integrated: { className: "bg-leaf-100 text-leaf-700", icon: "globe" },
 };
 
