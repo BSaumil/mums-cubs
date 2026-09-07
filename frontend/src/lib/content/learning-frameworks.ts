@@ -1,6 +1,17 @@
 import type { LearningFramework } from "@/lib/types";
 import { curriculumAreas } from "@/lib/content/curriculum-areas";
 
+const genVisual = (file: string, alt: string, dominantTone: "wood" | "clay" | "leaf" | "saffron" | "sky") => ({
+  id: file.replace(/\.jpg$/, ""),
+  src: `/images/real/${file}`,
+  alt,
+  width: 1024,
+  height: 1024,
+  type: "photo" as const,
+  dominantTone,
+  isPlaceholder: false,
+});
+
 const montessoriAreas = curriculumAreas.filter((area) => area.paradigm === "montessori");
 const vedicAreas = curriculumAreas.filter((area) => area.paradigm === "vedic");
 
@@ -9,6 +20,7 @@ export const learningFrameworks: LearningFramework[] = [
     id: "montessori",
     name: "The Montessori Path",
     visualTheme: "Wood, natural light, ordered materials",
+    heroVisual: genVisual("mc-gen-montessori-path-1024.jpg", "A child focused on wooden Montessori sensorial materials in a bright, plant-filled playroom.", "wood"),
     principles: [
       { id: "child-led", title: "Child-led exploration", description: "The child chooses the work; the adult prepares the environment." },
       { id: "hands-on", title: "Hands-on learning", description: "Concrete materials come before abstract explanation." },
@@ -22,6 +34,7 @@ export const learningFrameworks: LearningFramework[] = [
     id: "vedic",
     name: "The Vedic Path",
     visualTheme: "Sunrise, saffron, rhythm, nature",
+    heroVisual: genVisual("mc-gen-vedic-path-v2-1024.jpg", "A child sitting peacefully in namaste beside a lit diya lamp and singing bowl.", "saffron"),
     principles: [
       { id: "number-sense", title: "Mental mathematics", description: "Number relationships are seen and felt before they are calculated." },
       { id: "rhythm", title: "Rhythm & phonetics", description: "Chanting trains listening, pronunciation and sustained attention." },
@@ -52,6 +65,7 @@ export const learningFrameworks: LearningFramework[] = [
     id: "integrated",
     name: "Integrated Path",
     visualTheme: "Wood and saffron in shared balance",
+    heroVisual: genVisual("mc-gen-integrated-path-1024.jpg", "Two children playing together, one with Montessori blocks and one with a bell and marigolds, both traditions side by side.", "clay"),
     principles: [
       { id: "whole-child", title: "Whole-child outcomes", description: "Both paths are read through shared developmental outcomes: concentration, independence, curiosity, care." },
       { id: "complementary", title: "Complementary, not merged", description: "Each tradition keeps its own integrity; nothing is blended into a single blurred method." },

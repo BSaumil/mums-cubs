@@ -63,13 +63,24 @@ const practicalLifeActivity: Activity = {
   observableOutcomes: ["Steadier hand control", "Longer independent focus", "Calm after completing the cycle"],
 };
 
+const genAsset = (file: string, alt: string, dominantTone: VisualAsset["dominantTone"]): VisualAsset => ({
+  id: file.replace(/\.jpg$/, ""),
+  src: `/images/real/${file}`,
+  alt,
+  width: 1024,
+  height: 1024,
+  type: "photo",
+  dominantTone,
+  isPlaceholder: false,
+});
+
 const buttoningActivity: Activity = {
   id: "buttoning-frame",
   slug: "buttoning-frame",
   title: "Buttoning Frame",
-  visual: activityAsset(
-    "mc-montessori-practical-life-buttoning-activity-960.svg",
-    "Child's fingers working a row of buttons on a wooden dressing frame.",
+  visual: genAsset(
+    "mc-gen-buttoning-frame-1024.jpg",
+    "A child's fingers working a row of buttons on a wooden dressing frame.",
     "wood",
   ),
   duration: { min: 5, max: 8 },
@@ -80,8 +91,8 @@ const buttoningActivity: Activity = {
   contextLabel: "Montessori Practice",
   materials: [],
   steps: [
-    { order: 1, actionVerb: "observe", caption: "Notice how each button meets its hole.", image: activityAsset("mc-montessori-practical-life-buttoning-activity-960.svg", "A wooden dressing frame with a row of buttons.", "wood") },
-    { order: 2, actionVerb: "repeat", caption: "Work down the row, then undo and start again.", image: activityAsset("mc-montessori-practical-life-buttoning-activity-960.svg", "Child working buttons one by one down the frame.", "wood") },
+    { order: 1, actionVerb: "observe", caption: "Notice how each button meets its hole.", image: genAsset("mc-gen-buttoning-frame-1024.jpg", "A wooden dressing frame with a row of buttons.", "wood") },
+    { order: 2, actionVerb: "repeat", caption: "Work down the row, then undo and start again.", image: genAsset("mc-gen-buttoning-frame-1024.jpg", "Child working buttons one by one down the frame.", "wood") },
   ],
   observableOutcomes: ["Pincer-grip strength", "Sequencing left to right"],
 };

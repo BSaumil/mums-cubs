@@ -54,7 +54,7 @@ export function VisualFooter() {
           ))}
         </div>
         <p className="mt-12 text-xs text-[var(--text-subtle)]">
-          © {new Date().getFullYear()} Mums &amp; Cubs. Illustrative imagery shown is temporary placeholder art pending production photography.
+          © {new Date().getFullYear()} Mums &amp; Cubs. All rights reserved.
         </p>
       </div>
     </footer>

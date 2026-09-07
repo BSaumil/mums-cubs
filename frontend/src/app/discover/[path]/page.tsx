@@ -26,6 +26,12 @@ export default async function DiscoverPathPage({ params }: DiscoverPathPageProps
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      {framework.heroVisual ? (
+        <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-hero shadow-floating sm:aspect-[21/9]" data-testid={`discover-hero-${framework.id}`}>
+          <ResponsiveArt asset={framework.heroVisual} fill priority sizes="100vw" className="object-cover" />
+        </div>
+      ) : null}
+
       <header className="max-w-2xl">
         <VisualBadge label={framework.visualTheme} paradigm={framework.id === "integrated" ? undefined : framework.id} />
         <h1 className="mt-3 text-4xl font-semibold text-[var(--text-primary)]">{framework.name}</h1>

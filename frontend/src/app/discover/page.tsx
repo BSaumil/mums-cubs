@@ -16,6 +16,25 @@ const integratedAsset = getCurriculumAreaBySlug("culture-science")!.heroAsset;
 export default function DiscoverPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-hero shadow-floating sm:aspect-[21/9]" data-testid="discover-hub-hero">
+        <ResponsiveArt
+          asset={{
+            id: "mc-gen-discover-hub-1024",
+            src: "/images/real/mc-gen-discover-hub-1024.jpg",
+            alt: "Two children — one arranging a pink tower, one seated in namaste — exploring the Montessori and Vedic paths together.",
+            width: 1024,
+            height: 1024,
+            type: "photo",
+            dominantTone: "saffron",
+            isPlaceholder: false,
+          }}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+
       <header className="max-w-2xl">
         <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">Discover</p>
         <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Choose how you&apos;d like to explore.</h1>

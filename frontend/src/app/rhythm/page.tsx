@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon, type IconName } from "@/components/icons/Icon";
+import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 import { getCurriculumAreaBySlug } from "@/lib/content/curriculum-areas";
 
 export const metadata: Metadata = {
@@ -27,6 +28,11 @@ const dailyRhythmArea = getCurriculumAreaBySlug("daily-rhythm");
 export default function RhythmPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+      {dailyRhythmArea?.heroAsset ? (
+        <div className="relative mb-8 aspect-[16/9] w-full overflow-hidden rounded-hero shadow-floating" data-testid="rhythm-hero">
+          <ResponsiveArt asset={dailyRhythmArea.heroAsset} fill priority sizes="(min-width: 768px) 768px, 100vw" className="object-cover" />
+        </div>
+      ) : null}
       <p className="text-xs font-semibold uppercase tracking-widest text-[var(--color-ink-700)]">Gurukul-Inspired Practice</p>
       <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Dinacharya / Daily Rhythm</h1>
       <p className="mt-3 text-[var(--text-secondary)]">

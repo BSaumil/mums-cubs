@@ -44,9 +44,25 @@ export default function ParentsPage() {
         ))}
       </div>
 
-      <div className="mt-14 rounded-panel bg-wood-700 p-8 text-center text-white">
-        <h2 className="font-display text-2xl font-semibold">Join Our Community</h2>
-        <p className="mt-2 text-white/85">
+      <div className="mt-14 relative overflow-hidden rounded-panel p-8 text-center text-white" data-testid="parents-community-banner">
+        <ResponsiveArt
+          asset={{
+            id: "mc-gen-community-join-1024",
+            src: "/images/real/mc-gen-community-join-1024.jpg",
+            alt: "Parents and children sitting together on a rug, sharing a storybook.",
+            width: 1024,
+            height: 1024,
+            type: "photo",
+            dominantTone: "wood",
+            isPlaceholder: false,
+          }}
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-wood-700/75" />
+        <h2 className="relative font-display text-2xl font-semibold">Join Our Community</h2>
+        <p className="relative mt-2 text-white/85">
           A private space for parents to ask questions, share observations, and hear from educators.
         </p>
       </div>

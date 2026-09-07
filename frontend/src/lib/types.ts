@@ -127,6 +127,7 @@ export interface LearningFramework {
   id: Paradigm;
   name: string;
   visualTheme: string;
+  heroVisual?: VisualAsset;
   principles: Principle[];
   curriculumAreas: CurriculumArea[];
   developmentalDomains: DevelopmentDomain[];
