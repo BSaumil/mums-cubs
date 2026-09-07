@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200" width="960" height="1200" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-sky-sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EDF6F7"/>
+      <stop offset="100%" stop-color="#E4F0EF"/>
+    </linearGradient>
+    <radialGradient id="blob-sky-sun" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#E4F0EF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E4F0EF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#g-sky-sun)"/>
+  <rect width="960" height="1200" fill="url(#blob-sky-sun)"/>
+  <g transform="translate(480 600) scale(4.363636363636363)">
+    
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#669DA3" stroke-width="4.5"/>
+    <g stroke="#669DA3" stroke-width="4.5" stroke-linecap="round">
+      <path d="M0 -42 L0 -32"/>
+      <path d="M0 32 L0 42"/>
+      <path d="M-42 0 L-32 0"/>
+      <path d="M32 0 L42 0"/>
+      <path d="M-29.7 -29.7 L-22.6 -22.6"/>
+      <path d="M22.6 22.6 L29.7 29.7"/>
+      <path d="M-29.7 29.7 L-22.6 22.6"/>
+      <path d="M22.6 -22.6 L29.7 -29.7"/>
+    </g>
+  
+  </g>
+</svg>

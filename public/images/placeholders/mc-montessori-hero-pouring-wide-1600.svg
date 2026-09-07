@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-wood-jug" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5ECE0"/>
+      <stop offset="100%" stop-color="#E9D8C3"/>
+    </linearGradient>
+    <radialGradient id="blob-wood-jug" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#E9D8C3" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E9D8C3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g-wood-jug)"/>
+  <rect width="1600" height="900" fill="url(#blob-wood-jug)"/>
+  <g transform="translate(800 450) scale(4.090909090909091)">
+    
+    <path d="M-30 40 L-22 -30 Q-22 -40 -10 -40 L10 -40 Q22 -40 22 -30 L30 40 Q30 48 20 48 L-20 48 Q-30 48 -30 40 Z" fill="none" stroke="#9B6B43" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M22 -22 Q42 -18 40 4" fill="none" stroke="#9B6B43" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="4" cy="72" r="3" fill="#9B6B43"/>
+    <circle cx="-4" cy="86" r="2.4" fill="#9B6B43"/>
+  
+  </g>
+</svg>

@@ -1,0 +1,125 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ResponsiveArt } from "@/components/media/ResponsiveArt";
+import { VisualBadge } from "@/components/ui/VisualBadge";
+import { PhotoTray } from "@/components/cards/PhotoTray";
+import { MaterialObjectCard } from "@/components/cards/MaterialObjectCard";
+import { curriculumAreas, getCurriculumAreaBySlug } from "@/lib/content/curriculum-areas";
+import { getMaterialById } from "@/lib/content/materials";
+
+interface AreaPageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export function generateStaticParams() {
+  return curriculumAreas.map((area) => ({ slug: area.slug }));
+}
+
+export async function generateMetadata({ params }: AreaPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const area = getCurriculumAreaBySlug(slug);
+  if (!area) return {};
+  return { title: area.title, description: area.leadSentence };
+}
+
+const AGE_LABEL: Record<string, string> = {
+  "18m-3": "18 months – 3 years",
+  "3-6": "3 – 6 years",
+  "6-9": "6 – 9 years",
+  "9-12": "9 – 12 years",
+};
+
+export default async function CurriculumAreaPage({ params }: AreaPageProps) {
+  const { slug } = await params;
+  const area = getCurriculumAreaBySlug(slug);
+  if (!area) notFound();
+
+  const materials = area.materialIds.map(getMaterialById).filter((material) => material !== undefined);
+  const related = area.relatedAreas.map(getCurriculumAreaBySlug).filter((item) => item !== undefined);
+
+  return (
+    <article>
+      <div className="relative aspect-[16/7] w-full overflow-hidden">
+        <ResponsiveArt asset={area.heroAsset} fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink-900)]/70 via-[var(--color-ink-900)]/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
+          <VisualBadge label={area.contextLabel} paradigm={area.paradigm} />
+          <h1 className="mt-3 font-display text-4xl font-semibold text-white sm:text-5xl">{area.title}</h1>
+          <p className="mt-2 max-w-xl text-white/90">{area.leadSentence}</p>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap gap-2">
+          {area.ageBands.map((band) => (
+            <VisualBadge key={band} label={AGE_LABEL[band]} />
+          ))}
+          {area.developmentalDomains.map((domain) => (
+            <span
+              key={domain}
+              className="inline-flex items-center rounded-capsule bg-surface-muted px-3 py-1 text-xs font-medium capitalize text-[var(--text-secondary)]"
+            >
+              {domain}
+            </span>
+          ))}
+        </div>
+
+        <section className="mt-12">
+          <h2 className="text-2xl font-semibold text-[var(--text-primary)]">Activities</h2>
+          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {area.activities.map((activity) => (
+              <PhotoTray
+                key={activity.id}
+                id={activity.id}
+                image={activity.visual}
+                title={activity.title}
+                lead={activity.objective}
+                paradigm={area.paradigm}
+                ageBand={activity.ageBand}
+                objective={activity.objective}
+                skillTags={[{ id: activity.id, label: activity.contextLabel }]}
+                materialName={activity.materials[0]?.name}
+                href={`/activities/${activity.slug}`}
+              />
+            ))}
+          </div>
+        </section>
+
+        {materials.length > 0 ? (
+          <section className="mt-14">
+            <h2 className="text-2xl font-semibold text-[var(--text-primary)]">Materials Used</h2>
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {materials.map((material) => (
+                <MaterialObjectCard key={material.id} material={material} />
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="mt-14 rounded-panel bg-surface-muted p-8">
+          <h2 className="text-xl font-semibold text-[var(--text-primary)]">What to observe as a parent</h2>
+          <p className="mt-2 max-w-2xl text-[var(--text-secondary)]">{area.parentObservation}</p>
+        </section>
+
+        {related.length > 0 ? (
+          <section className="mt-14">
+            <h2 className="text-2xl font-semibold text-[var(--text-primary)]">Related Areas</h2>
+            <ul className="mt-4 flex flex-wrap gap-3">
+              {related.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={`/curriculum/${item.slug}`}
+                    className="inline-flex min-h-11 items-center rounded-capsule border border-[var(--color-ink-300)]/50 px-4 py-2 text-sm font-medium text-[var(--text-primary)] hover:border-wood-500"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+      </div>
+    </article>
+  );
+}
