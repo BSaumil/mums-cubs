@@ -6,3 +6,10 @@ __pycache__/
 # NOTE: backend/.env is intentionally NOT ignored. The deploy pipeline reads it
 # during build-context preparation, and the build fails if it is absent.
 # Keep real secrets in the platform secrets manager instead of that file.
+.env
+.env.*
+*.env
+credentials.json
+*.pem
+*.key
+.credentials
