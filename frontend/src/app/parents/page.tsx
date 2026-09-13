@@ -4,20 +4,25 @@ import { curriculumAreas } from "@/lib/content/curriculum-areas";
 import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 import { DigestPreview } from "@/components/parents/DigestPreview";
 import { NewsletterSignup } from "@/components/parents/NewsletterSignup";
+import { isEmailConfigured } from "@/lib/server/email-provider";
+import { isPersistenceConfigured } from "@/lib/server/subscription-store";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/parents" },
   title: "For Parents",
   description: "What to observe at home, area by area — and how to join the Mums & Cubs community.",
 };
 
 export default function ParentsPage() {
+  const emailSignupConfigured = isPersistenceConfigured() && isEmailConfigured();
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
       <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">For Parents</p>
-      <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Watch, don&apos;t direct.</h1>
+      <h1 className="mt-2 text-4xl font-semibold text-[var(--text-primary)]">Observe first. Help when needed.</h1>
       <p className="mt-3 max-w-xl text-[var(--text-secondary)]">
-        The most useful thing a parent can do at home is observe without correcting. Here is what to look for, area
-        by area.
+        Notice what your child is trying, offer help when it is useful, and step in whenever safety or comfort
+        requires it. Here is what to look for, area by area.
       </p>
 
       <div className="mt-8 relative aspect-square w-full max-w-sm overflow-hidden rounded-panel shadow-floating" data-testid="parents-character-visual">
@@ -80,11 +85,12 @@ export default function ParentsPage() {
         <p className="text-xs font-semibold uppercase tracking-widest text-wood-700">Get Notified</p>
         <h2 className="mt-2 font-display text-2xl font-semibold text-[var(--text-primary)]">Join the waitlist for weekly digests</h2>
         <p className="mt-2 max-w-xl text-sm text-[var(--text-secondary)]">
-          Leave your email and we&apos;ll reach out the moment digest emails launch. This is saved on this device only
-          — nothing is sent anywhere yet.
+          {emailSignupConfigured
+            ? "Leave your email and confirm it to join — we'll only email you about the weekly digest, and you can unsubscribe any time."
+            : "Weekly digest emails aren't live yet."}
         </p>
         <div className="mt-6 max-w-md">
-          <NewsletterSignup />
+          <NewsletterSignup configured={emailSignupConfigured} />
         </div>
       </div>
 
@@ -105,9 +111,10 @@ export default function ParentsPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-wood-700/75" />
-        <h2 className="relative font-display text-2xl font-semibold">Join Our Community</h2>
+        <h2 className="relative font-display text-2xl font-semibold text-white">Community features are planned</h2>
         <p className="relative mt-2 text-white/85">
-          A private space for parents to ask questions, share observations, and hear from educators.
+          A space for parents to ask questions and share observations isn&apos;t live yet. In the meantime, join the
+          digest waitlist below to hear when it launches.
         </p>
       </div>
     </div>

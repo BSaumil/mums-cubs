@@ -16,7 +16,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: DiscoverPathPageProps): Promise<Metadata> {
   const { path } = await params;
   if (!isFrameworkId(path)) return {};
-  return { title: getFramework(path)!.name };
+  return { title: getFramework(path)!.name, alternates: { canonical: `/discover/${path}` } };
 }
 
 export default async function DiscoverPathPage({ params }: DiscoverPathPageProps) {

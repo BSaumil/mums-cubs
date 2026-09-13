@@ -22,7 +22,10 @@ export function MaterialGallery({ materials }: { materials: Material[] }) {
   const [active, setActive] = useState<CategoryFilter>("all");
 
   const visible = useMemo(
-    () => (active === "all" ? materials : materials.filter((material) => material.category === active)),
+    () =>
+      active === "all"
+        ? materials
+        : materials.filter((material) => material.category === active || material.tags?.includes(active)),
     [materials, active],
   );
 
@@ -46,10 +49,25 @@ export function MaterialGallery({ materials }: { materials: Material[] }) {
           );
         })}
       </div>
-      <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {visible.map((material) => (
-          <MaterialObjectCard key={material.id} material={material} />
-        ))}
+      <div aria-live="polite">
+        {visible.length > 0 ? (
+          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {visible.map((material) => (
+              <MaterialObjectCard key={material.id} material={material} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-6 flex flex-col items-center gap-3 py-12 text-center">
+            <p className="text-[var(--text-subtle)]">No materials match this filter yet.</p>
+            <button
+              type="button"
+              onClick={() => setActive("all")}
+              className="min-h-11 rounded-capsule bg-wood-700 px-4 py-2 text-sm font-medium text-white"
+            >
+              View all materials
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

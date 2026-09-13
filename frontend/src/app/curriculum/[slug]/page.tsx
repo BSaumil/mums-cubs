@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: AreaPageProps): Promise<Metad
   const { slug } = await params;
   const area = getCurriculumAreaBySlug(slug);
   if (!area) return {};
-  return { title: area.title, description: area.leadSentence };
+  return { title: area.title, description: area.leadSentence, alternates: { canonical: `/curriculum/${area.slug}` } };
 }
 
 const AGE_LABEL: Record<string, string> = {

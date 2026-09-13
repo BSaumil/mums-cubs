@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import Script from "next/script";
 import { GlobalHeader } from "@/components/layout/GlobalHeader";
 import { VisualFooter } from "@/components/layout/VisualFooter";
+import { SITE_URL } from "@/lib/site-config";
 import "./globals.css";
 
 const THEME_INIT_SCRIPT = `
@@ -26,7 +27,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mumsandcubs.example.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Mums & Cubs — Rooted Learning, Brighter Tomorrows",
     template: "%s — Mums & Cubs",

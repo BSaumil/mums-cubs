@@ -4,6 +4,7 @@ import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 import { curriculumAreas } from "@/lib/content/curriculum-areas";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/curriculum" },
   title: "Curriculum Hub",
   description: "Every Montessori and Vedic curriculum area, filterable by path and age.",
 };

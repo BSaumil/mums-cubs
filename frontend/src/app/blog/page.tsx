@@ -3,6 +3,7 @@ import { BlogExplorer } from "@/components/blog/BlogExplorer";
 import { blogPosts } from "@/lib/content/blog-posts";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/blog" },
   title: "Blog",
   description: "Montessori and Vedic-inspired parenting articles — practical guides, age-stage advice, and material spotlights.",
 };

@@ -5,6 +5,7 @@ import { learningFrameworks } from "@/lib/content/learning-frameworks";
 import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/philosophy" },
   title: "Our Philosophy",
   description: "How Mums & Cubs keeps Montessori practice and Vedic tradition distinct rather than blurred together.",
 };

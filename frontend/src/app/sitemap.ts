@@ -2,8 +2,7 @@ import type { MetadataRoute } from "next";
 import { curriculumAreas } from "@/lib/content/curriculum-areas";
 import { blogPosts } from "@/lib/content/blog-posts";
 import { learningFrameworks } from "@/lib/content/learning-frameworks";
-
-const BASE_URL = "https://mumsandcubs.example.com";
+import { SITE_URL as BASE_URL } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

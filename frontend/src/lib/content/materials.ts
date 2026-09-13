@@ -52,6 +52,7 @@ export const materials: Material[] = [
     slug: "sound-cylinders",
     name: "Sound Cylinders",
     category: "sensorial",
+    tags: ["sound"],
     paradigm: "montessori",
     ageBand: "3-6",
     description: "Sealed cylinder pairs matched by ear, sharpening auditory discrimination.",

@@ -42,7 +42,7 @@ export function GlobalHeader() {
             href="/parents"
             className="rounded-capsule bg-wood-700 px-5 py-2.5 text-sm font-medium text-white shadow-resting transition-transform hover:-translate-y-0.5"
           >
-            Join Our Community
+            For Parents
           </Link>
         </div>
         <div className="flex items-center gap-1 lg:hidden">

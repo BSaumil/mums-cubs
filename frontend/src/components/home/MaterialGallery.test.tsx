@@ -35,4 +35,39 @@ describe("MaterialGallery", () => {
     expect(mathButton).toHaveAttribute("aria-pressed", "true");
     expect(allButton).toHaveAttribute("aria-pressed", "false");
   });
+
+  it("matches a tagged material (Sound Cylinders) under the Sound filter even though its category is Sensorial", async () => {
+    const user = userEvent.setup();
+    render(<MaterialGallery materials={materials} />);
+
+    await user.click(screen.getByRole("button", { name: "Sound" }));
+
+    expect(screen.getByText("Sound Cylinders")).toBeInTheDocument();
+    expect(screen.queryByText("Golden Beads")).not.toBeInTheDocument();
+  });
+
+  it("keeps Sound Cylinders under the Sensorial filter (its primary pedagogical category)", async () => {
+    const user = userEvent.setup();
+    render(<MaterialGallery materials={materials} />);
+
+    await user.click(screen.getByRole("button", { name: "Sensorial" }));
+
+    expect(screen.getByText("Sound Cylinders")).toBeInTheDocument();
+    expect(screen.getByText("Pink Tower")).toBeInTheDocument();
+  });
+
+  it("shows an empty state with a working reset when a filter matches nothing", async () => {
+    const user = userEvent.setup();
+    const materialsWithoutSound = materials.filter((material) => material.id !== "sound-cylinders");
+    render(<MaterialGallery materials={materialsWithoutSound} />);
+
+    await user.click(screen.getByRole("button", { name: "Sound" }));
+
+    expect(screen.getByText("No materials match this filter yet.")).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "View all materials" }));
+
+    expect(screen.queryByText("No materials match this filter yet.")).not.toBeInTheDocument();
+    expect(screen.getByText("Golden Beads")).toBeInTheDocument();
+  });
 });
