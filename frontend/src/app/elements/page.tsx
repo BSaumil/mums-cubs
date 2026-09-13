@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FiveElementsGrid } from "@/components/discover/FiveElementsGrid";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/elements" },
   title: "The Five Elements",
   description: "Pancha Mahabhuta — a cultural and philosophical lens for observation, explored one element at a time.",
 };

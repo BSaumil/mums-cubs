@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { WholeChildMap } from "@/components/discover/WholeChildMap";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/whole-child" },
   title: "Whole-Child Map",
   description: "How curriculum areas from both paths connect to eight developmental domains.",
 };

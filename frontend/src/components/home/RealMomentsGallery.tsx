@@ -6,9 +6,9 @@ export function RealMomentsGallery({ moments }: { moments: RealMoment[] }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8" data-testid="real-moments-gallery">
       <div className="max-w-2xl">
-        <h2 className="text-3xl font-semibold text-[var(--text-primary)] sm:text-4xl">Real Families, Real Moments</h2>
+        <h2 className="text-3xl font-semibold text-[var(--text-primary)] sm:text-4xl">Learning moments to explore</h2>
         <p className="mt-2 text-[var(--text-secondary)]">
-          Straight from Mums &amp; Cubs homes — no illustrations, just life as it happens.
+          Illustrative scenes of hands-on learning and family routines.
         </p>
       </div>
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">

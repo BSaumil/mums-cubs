@@ -20,7 +20,11 @@ export async function generateMetadata({ params }: ActivityPageProps): Promise<M
   const { slug } = await params;
   const found = getActivityBySlug(slug);
   if (!found) return {};
-  return { title: found.activity.title, description: found.activity.objective };
+  return {
+    title: found.activity.title,
+    description: found.activity.objective,
+    alternates: { canonical: `/activities/${found.activity.slug}` },
+  };
 }
 
 export default async function ActivityPage({ params }: ActivityPageProps) {

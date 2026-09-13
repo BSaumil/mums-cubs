@@ -7,6 +7,7 @@ import { getCurriculumAreaBySlug } from "@/lib/content/curriculum-areas";
 import { DEFAULT_RHYTHM } from "@/lib/content/rhythm-defaults";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/rhythm" },
   title: "Daily Rhythm",
   description: "A sunrise-to-sunset example rhythm — a scaffold for families to adapt, not a schedule to follow exactly.",
 };

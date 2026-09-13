@@ -85,7 +85,15 @@ export interface Material {
   id: string;
   slug: string;
   name: string;
+  /** Pedagogical category — the shelf this material actually belongs to. */
   category: "practical" | "sensorial" | "language" | "math" | "nature" | "sound" | "rhythm";
+  /**
+   * Discovery tags — cross-cutting ways a parent might look for this material
+   * that don't match its pedagogical category (e.g. a Sensorial material
+   * that works with sound). Distinct from `category` on purpose: changing
+   * how something is discovered should never require reclassifying it.
+   */
+  tags?: string[];
   paradigm: Paradigm;
   visual: VisualAsset;
   description: string;

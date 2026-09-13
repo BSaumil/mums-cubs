@@ -15,6 +15,7 @@ import { realMoments } from "@/lib/content/real-moments";
 import type { Paradigm } from "@/lib/types";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   title: "Mums & Cubs — Rooted Learning, Brighter Tomorrows",
 };
 

@@ -4,6 +4,7 @@ import { ResponsiveArt } from "@/components/media/ResponsiveArt";
 import { materials } from "@/lib/content/materials";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/materials" },
   title: "Materials",
   description: "Every tactile material a child touches at Mums & Cubs, filterable by category.",
 };

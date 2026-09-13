@@ -7,6 +7,7 @@ import { homepageHeroAssets } from "@/lib/content/home";
 import { getCurriculumAreaBySlug } from "@/lib/content/curriculum-areas";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/discover" },
   title: "Discover",
   description: "Choose the Montessori path, the Vedic path, or an integrated view of both.",
 };

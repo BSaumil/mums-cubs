@@ -22,7 +22,7 @@ export function CurriculumCTA() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[var(--color-ink-900)]/55" />
-        <h2 className="relative max-w-xl font-display text-3xl font-semibold sm:text-4xl">
+        <h2 className="relative max-w-xl font-display text-3xl font-semibold text-white sm:text-4xl">
           Raising capable minds. Grounded hearts.
         </h2>
         <p className="relative max-w-md text-white/85">

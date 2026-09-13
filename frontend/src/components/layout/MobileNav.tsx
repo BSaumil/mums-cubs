@@ -52,7 +52,7 @@ export function MobileNav({ items }: MobileNavProps) {
               onClick={() => setOpen(false)}
               className="mt-2 rounded-capsule bg-wood-700 px-5 py-3 text-center text-sm font-medium text-white"
             >
-              Join Our Community
+              For Parents
             </Link>
           </nav>
         </div>

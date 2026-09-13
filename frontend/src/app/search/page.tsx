@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteSearch } from "@/components/search/SiteSearch";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/search" },
   title: "Search",
   description: "Search across curriculum areas, activities, materials and blog articles.",
 };

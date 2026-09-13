@@ -25,13 +25,20 @@ const COLUMNS = [
       { href: "/parents", label: "For Parents" },
     ],
   },
+  {
+    title: "Company",
+    links: [
+      { href: "/contact", label: "Contact" },
+      { href: "/privacy", label: "Privacy" },
+    ],
+  },
 ];
 
 export function VisualFooter() {
   return (
     <footer className="mt-24 border-t border-[var(--color-ink-300)]/30 bg-[var(--color-canvas-100)]">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(4,1fr)]">
           <div>
             <BrandMark />
             <p className="mt-4 max-w-xs text-sm text-[var(--text-subtle)]">

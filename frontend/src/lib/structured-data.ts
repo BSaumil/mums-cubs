@@ -1,5 +1,6 @@
+import { SITE_URL as BASE_URL } from "@/lib/site-config";
+
 const SITE_NAME = "Mums & Cubs";
-const BASE_URL = "https://mumsandcubs.example.com";
 
 export function articleJsonLd(post: { title: string; description: string; slug: string; publishedAt: string }) {
   return {

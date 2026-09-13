@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GrowthTracker } from "@/components/growth/GrowthTracker";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/growth" },
   title: "Growth Notes",
   description: "A private, per-device log of what you notice in your child's development — not a screening tool.",
 };
